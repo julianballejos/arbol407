@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>407 PSP 001</title>
+    <link rel="icon" type="image/x-icon"
+        href="https://edilizia.com.ar/wp-content/uploads/2020/06/cropped-Isologotipo2-e1591298183769-1-150x150.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        #header {
+            position: -webkit-sticky;
+            /* Safari */
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            margin: 0;
+            color: #ffffff
+        }
+
+        @media only screen and (max-width: 1100px) {
+
+
+            body {
+                overflow-x: scroll;
+            }
+
+            ul {
+                padding-inline-start: 20px;
+            }
+
+            .field1 {
+                left: 115px;
+            }
+
+
+
+        }
+
+        @media only screen and (max-width: 950px) {
+
+            #header {
+                color: rgb(27, 58, 76);
+            }
+
+            #abrirModal {
+                display: none;
+            }
+        }
+
+
+
+        #menu * {
+            list-style: none;
+        }
+
+        #menu li {
+            line-height: 225%;
+            position: relative;
+            border: dotted 1px rgba(108, 108, 108, 0);
+        }
+
+        #menu li a {
+            color: #222;
+            text-decoration: none;
+        }
+
+        #menu li a:before {
+            content: "\025b8";
+            color: #ddd;
+            margin-right: 4px;
+        }
+
+        #menu .toggle {
+            cursor: pointer;
+            display: inline-block;
+            margin-right: 4px;
+            color: #6c757d;
+        }
+
+        #menu .toggle:before {
+            content: "\025b8";
+            margin-right: 4px;
+        }
+
+        #menu .toggle.expanded:before {
+            content: "\025be";
+        }
+
+        #menu .toggle.infimo:before {
+            content: "\025b8";
+            color: #cecece
+        }
+
+        .interior {
+            display: none;
+        }
+
+        #menu li:hover {
+            background-color: #dcdcdc;
+            border: dotted 1px rgb(108, 108, 108);
+            /*transition: 0.3s;*/
+        }
+
+        #menu ul>li {
+            font-weight: bold;
+            background-color: #eee;
+        }
+
+        #menu ul ul>li {
+            font-weight: normal;
+            background-color: #f5f5f5;
+            font-weight: 500;
+        }
+
+        #menu ul ul ul>li {
+            font-weight: normal;
+            background-color: #f9f9f9;
+        }
+
+        table,
+        td,
+        th {
+            border: 1px solid;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            display: inline-table;
+        }
+
+        .field1 {
+            color: rgb(0, 0, 0);
+            left: 150px;
+            position: absolute;
+            max-width: calc(100% - 800px);
+            min-width: 50px;
+        }
+
+        .icono {
+            width: 20px;
+            right: 570px;
+            position: absolute;
+            top: 4px;
+            opacity: 0.25;
+        }
+
+        .icono:hover {
+            opacity: 0.35;
+            /*transition: 0.3s;*/
+        }
+
+        .field2 {
+            color: rgb(36, 55, 36);
+            right: 520px;
+            position: absolute;
+            max-width: 35px;
+        }
+
+        .field3 {
+            color: rgb(0, 0, 0);
+            right: 460px;
+            position: absolute;
+        }
+
+        .field4a {
+            color: rgb(142, 152, 179);
+            right: 340px;
+            position: absolute;
+        }
+
+        .field4b {
+            color: rgb(142, 152, 179);
+            right: 230px;
+            position: absolute;
+        }
+
+        .field4 {
+            color: rgb(173 173 173);
+            right: 120px;
+            position: absolute;
+        }
+
+        .field5 {
+            color: #737373;
+            right: 10px;
+            position: absolute;
+        }
+
+        span {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+
+        .icono_nat::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            background-color: #333;
+            color: #fff;
+            padding: 1px;
+            border-radius: 1px;
+            white-space: nowrap;
+            z-index: 10;
+            transform: translateX(-50%);
+            transition-delay: 0.5s;
+            font-size: 5px;
+            line-height: 8px;
+            font-weight: 600;
+            z-index: 1;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #818181;
+            display: block;
+            transition: 0.2s;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            justify-content: center;
+            align-items: center;
+            transition: 0.5s;
+        }
+
+        .modal-contenido {
+            background-color: #fff;
+            /* Fondo blanco para el contenido */
+            margin: 20% auto;
+            /* Posicionar en el centro */
+            padding: 25px 0 0 0;
+            /*border: 0px solid #ccc;*/
+            border-radius: 15px;
+            /* Bordes redondeados */
+            max-width: 750px;
+            /* Ancho máximo */
+            margin: 0;
+        }
+
+        #cerrarModal {
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            border: 0;
+            background-color: #fff;
+            float: right;
+            color: gray;
+            cursor: pointer;
+            z-index: 1;
+            position: relative;
+            margin-right: 20px;
+        }
+
+        #cerrarModal:hover {
+            background-color: #ececec;
+        }
+
+        #abrirModal {
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            border: 0;
+            background-color: #eee;
+            float: right;
+            color: #599ed6;
+            cursor: pointer;
+            margin-right: 5px;
+            font-weight: 600;
+        }
+
+        #abrirModal:hover {
+            background-color: #b6ccde;
+        }
+
+        .hoverable {
+            position: fixed;
+            background-color: #1b3a4c;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            opacity: 0%;
+            left: 4px;
+            cursor: pointer;
+        }
+
+        .hoverable:hover {
+            opacity: 10%;
+        }
+
+        #loading-indicator {
+            position: fixed;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+
+        .spinner {
+
+            border: 10px solid #f3f3f3;
+            /* Light grey */
+            border-top: 10px solid #3498db;
+            /* Blue */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Slideshow container */
+        .slideshow-container {
+            position: relative;
+            background: white;
+            height: 300px;
+        }
+
+
+        /* Slides */
+        .mySlides {
+            display: none;
+            padding-top: 25px;
+            padding-bottom: 25px;
+            padding-left: 45px;
+            padding-right: 45px;
+            text-align: left;
+        }
+
+        /* Next & previous buttons */
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -30px;
+            padding: 16px;
+            color: #888;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            text-decoration: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            position: absolute;
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-decoration: none;
+        }
+
+        /* The dot/bullet/indicator container */
+        .dot-container {
+            text-align: center;
+            padding: 10px;
+            /*background: #ddd;*/
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+            cursor: pointer;
+            height: 10px;
+            width: 10px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.4s ease;
+        }
+
+        /* Add a background color to the active dot/circle */
+        .active,
+        .dot:hover {
+            background-color: #0059b3;
+        }
+
+        .chip_button {
+            border: 0px;
+            border-radius: 30px;
+            padding: 2px 15px 2px 15px;
+            background-color: #e6e4e4;
+            opacity: 0.7;
+            margin: 0 2px 0 2px;
+
+        }
+
+        .chip_button:hover {
+            opacity: 1;
+        }
+
+        .active_button {
+            background-color: #90a4ae;
+            opacity: 1;
+        }
+
+        /* Elementos a mostrar/ocultar */
+        #menu_container {
+            transition: all 0.3s ease-in-out;
+        }
+
+        #tabla_conceptos {
+            display: none;
+            transition: all 0.5s;
+        }
+
+        #menu_container.activeelm {
+            display: block;
+        }
+
+        #tabla_conceptos.activeelm {
+            display: block;
+        }
+
+        table {
+            width: calc(100% - 40px);
+            border-collapse: collapse;
+            margin: 20px;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            /*text-align: left;*/
+            max-width: 250px;
+            /* Ajusta el ancho máximo de las celdas aquí */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        th {
+            cursor: pointer;
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FYF2QXJCD1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-FYF2QXJCD1');
+</script>
+
+
+<body style="font-family:'Open Sans', sans-serif;font-size:15px;margin:0;">
+
+    <div id="modal" class="modal">
+
+        <div class="modal-contenido">
+            <button id="cerrarModal">⨉</button>
+            <div class="slideshow-container">
+
+                <div class="mySlides">
+
+                    <p class=" w3-animate-right">
+
+                    <p><b>Presto</b> es un programa de gestión de costos y tiempos de obra que actualmente usamos en
+                        EDILIZIA para la confección de presupuestos. </p>
+                    <p>A la fecha contamos con 4 licencias del programa, una de las cuales está destinada a Obras. Para
+                        acceder a
+                        esta licencia,
+                        solicitar a Costos el usuario y contraseña. Se debe tener el software descargado e instalado.
+                    </p>
+                    <p>Aquí simulamos un visualizador del presupuesto de la obra, similar a la vista en árbol del
+                        programa, que
+                        puede usarse libremente para consulta por parte de cualquier persona con acceso a este sitio.
+                    </p>
+
+
+                </div>
+
+                <div class="mySlides">
+
+                    <p class=" w3-animate-right">
+
+                    <p>Tener en cuenta que:</p>
+                    <ul>
+                        <li style="margin-bottom:10px;"> todos los números que figuran acá se corresponden con el
+                            presupuesto de costo. El
+                            presupuesto de
+                            venta debe consultarse en Presupuestos Contratados.</li>
+                        <li style="margin-bottom:10px;"> la codificación de estos ítems puede diferir de los que figuran
+                            en Presupuestos
+                            Contratados.</li>
+                        <li style="margin-bottom:10px;"> la columna Cant. de un concepto indica el rendimiento de ese
+                            concepto en relación al
+                            concepto
+                            inmediatamente superior. Por ejemplo,
+                            <code>Vigas 25 m3 > Hierro nervurado cortado y doblado 50 kg</code> indica que en 1 m3 de
+                            vigas
+                            están cotizados 50 kg de hierro
+                        </li>
+
+
+                    </ul>
+
+                </div>
+
+                <div class="mySlides">
+
+                    <p class=" w3-animate-right">
+
+
+                    <ul>
+
+                        <li style="margin-bottom:10px;"> todo concepto tiene una naturaleza, que puede ser Material,
+                            Mano de obra, Maquinaria,
+                            Partida,
+                            Capítulo, Otros. Las columnas Un. Mat y Un. Mdo engloban todos los conceptos inferiores cuya
+                            naturaleza sean Material y Mano de Obra, respectivamente. Los conceptos de otras naturalezas
+                            no se
+                            computan en ninguna de estas columnas, sí lo hacen en la columna Precio Unitario.
+                        </li>
+                        <li style="margin-bottom:10px;"> [en elaboración]
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+
+            </div>
+
+            <div class="dot-container">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="header">
+        <div
+            style=" display: flex;   justify-content: space-between;background-color: #ffffff;padding-top: 20px; padding-bottom: 10px;">
+            <!-- <div class="hoverable"></div> -->
+            <div style="display: inline-flex;">
+                <span style="color: #091533;font-size: 20px;padding-left:10px;cursor:pointer;margin-right: 20px;"
+                    onclick="openNav()">☰
+                    &nbsp;407 PSP 001 - OFICINAS JOHN DEERE</span>
+                <button id="buttonA" class="active_button chip_button">Vista árbol</button>
+                <button id="buttonB" class="chip_button">Conceptos</button>
+            </div>
+            <div>
+                <button id="abrirModal">?</button>
+                <!-- <label for="expand-options">Opciones de expansión:</label> -->
+                <select id="expand-options" style="margin-right: 10px;">
+                    <option value="nada">...</option>
+                    <option value="expand-all">Expandir todo</option>
+                    <option value="collapse-all">Contraer todo</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <div id="banner" style="background-color: rgb(27, 58, 76);height: 30px;align-content: center;">
+                <span style="max-width: calc(100% - 600px); "></span>
+                <span style="right: 520px;position: absolute;">Un.</span>
+                <span style="right: 460px;position: absolute;">Cant.</span>
+                <span style="right: 375px;position: absolute;">Un. Mat</span>
+                <span style="right: 275px;position: absolute;">Un. MdO</span>
+                <!-- <span style="right: 255px;position: absolute;cursor: pointer;" onclick="addcolumns()">+</span> -->
+                <span style="right: 145px;position: absolute;" title="Color gris: precio calculado">Precio
+                    Unitario</span>
+                <span style="right: 65px;position: absolute;">Total</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div loading="lazy" id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <p style="font-size: 11px;padding: 0 50px;cursor: auto;color: white;"> ⚠ Actualmente
+            esta obra no cuenta con más presupuestos.</p>
+        <a href="#" style="padding: 0 25px 0 25px;margin: 0;">
+            <hr size="2px" color="white">
+        </a>
+        <a href="https://docs.google.com/spreadsheets/d/1lfnnJCJzw6SGYMJXYxPvzVZsRb5SMiMxyk_oWpCcpeQ/edit?gid=659896829#gid=659896829"
+            target="_blank">Presupuestos
+            Contratados</a>
+        <a href="https://docs.google.com/spreadsheets/d/1Rs63iiVcwJvAuixPBSf2p0r31uv2GIqhk92iinLSmoQ/edit?gid=164668909#gid=164668909&range=A1"
+            target="_blank">Toolbox</a>
+    </div>
+
+    <div id="spinner-container"
+        style="  position: fixed;    top: 0;    left: 0;    width: 100%;    height: 100%;    z-index: 1;    justify-content: center;    align-items: center;    display: flex;">
+
+        <div id="loading-indicator">
+            <!-- <div class="spinner"></div> -->
+            <div class="spinner-grow text-muted"></div>
+        </div>
+
+    </div>
+
+    <div id="menu_container">
+        <ul id="menu" style="display:block;margin-right: 15px;min-width: 900px;"></ul>
+    </div>
+    <table id="tabla_conceptos" style="display:none"></table>
+
+
+
+    <script>
+
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+
+
+        // Mostrar el indicador de carga
+        //document.getElementById('loading-indicator').style.display = 'block';
+
+        // ... (Código para construir el árbol)
+
+
+
+        const botonAbrir = document.getElementById("abrirModal");
+        const modal = document.getElementById("modal");
+        function abrirModal() {
+            modal.style.transition = "2.5s";
+            modal.style.display = "flex";
+        }
+
+        function cerrarModal() {
+            modal.style.transition = "2.5s";
+            modal.style.display = "none";
+        }
+        botonAbrir.addEventListener("click", abrirModal);
+
+        const botonCerrar = document.getElementById("cerrarModal");
+        botonCerrar.addEventListener("click", cerrarModal);
+
+
+
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            document.getElementById('loading-indicator').style.display = 'block';
+
+            elements_superior = ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '02.08.01', '06.01.05', '07.02.01', '07.02.01', '07.02.01', '07.02.01', '07.05.01', '07.05.01', '07.05.01', '07.08.01', '07.08.01', '1.00', '1.00', '1.00', '1.00', '1.01', '1.02', '1.03', '1.03', '1.03', '1.03', '1.03', '1.03', '1.03', '1.06', '10.00', '10.00', '10.01', '10.01', '10.01', '11.00', '11.00', '11.00', '11.00', '11.00', '11.00', '11.00', '11.00', '11.00', '11.00', '11.00', '11.00', '11.00', '11.01', '11.02', '11.03', '11.04', '11.05', '11.05', '11.06', '11.06', '11.07', '11.07', '11.08', '11.09', '11.10', '11.10', '11.11', '11.12', '12.00', '12.00', '12.00', '12.00', '12.00', '12.00', '14.00', '14.00', '14.01', '14.02', '14.02', '15.00', '15.00', '15.01', '15.02', '16.00', '16.00', '16.01', '16.01', '16.02', '16.02', '17.00', '17.00', '2.00', '2.00', '2.00', '2.00', '2.00', '2.00', '2.00', '2.00', '2.00', '2.02', '2.03', '2.04', '2.05', '2.07', '2.08', '2.09', '2.11', '2.11', '22.00', '22.00', '22.00', '22.00', '22.00', '22.00', '22.00', '22.00', '22.00', '22.00', '22.05', '22.05', '22.05', '22.05', '22.05.02', '22.05.03', '22.05.03', '22.05.03', '22.05.04', '22.05.04', '22.05.04', '22.05.05', '22.05.05', '22.05.05', '22.06', '22.06', '24.00', '24.00', '24.00', '24.00', '24.00', '24.00', '24.00', '24.00', '24.00', '24.00', '24.00', '24.00', '24.00', '24.00', '24.01', '24.02', '24.03', '24.04', '24.05', '24.07', '24.08', '24.09', '24.10', '24.11', '24.12', '24.13', '24.14', '24.15', '26.00', '26.00', '26.00', '26.00', '26.00', '26.00', '26.00', '27.00', '28.00', '28.00', '28.00', '28.01', '28.02', '28.03', '3.00', '3.00', '3.00', '3.00', '3.00', '3.00', '3.00', '3.01', '3.02', '3.02.1', '3.03', '3.03', '3.04', '3.04', '3.05', '30.00', '30.00', '30.01', '30.02', '31.00', '32.00', '32.00', '32.01', '32.02', '33.00', '33.00', '33.00', '4.00', '4.00', '4.00', '4.00', '4.00', '4.00', '4.00', '4.00', '4.00', '4.00', '4.00', '4.00', '4.00', '4.00', '4.00', '4.01', '4.01', '4.02', '4.02', '4.03', '4.03', '4.04', '4.04', '4.05', '4.05', '4.06', '4.06', '4.06', '4.06', '4.07', '4.07', '4.08', '4.08', '4.09', '4.09', '4.10', '4.10', '4.11', '4.11', '4.12', '4.12', '4.13', '4.13', '4.14', '4.14', '4.15', '4.15', '6.00', '6.01', '6.01', '6.01', '6.01', '7.00', '7.00', '7.00', '7.00', '7.00', '7.00', '7.00', '7.00', '7.00', '7.00', '7.00', '7.00', '7.01', '7.02', '7.03', '7.05', '7.06', '7.08', '7.09', '7.11', '7.12', '7.13', '8.00', '8.01', '9.00', '9.01', 'O02.010', 'O02.010', 'O02.010', 'O02.010', 'O02.010', 'O02.010', 'O02.010', 'O02.010', 'O02.010', 'O02.010', 'O02.010', 'O02.010', 'O02.010', 'O02.010.011', 'O02.010.012', 'O02.010.013', 'O02.010.020', 'O02.010.021', 'O02.010.030', 'O02.010.031', 'O02.010.040', 'O02.010.060', 'O02.010.070', 'O02.010.090', 'O02.020', 'O02.020', 'O02.020', 'O02.020', 'O02.020', 'O02.020', 'O02.020', 'O02.020', 'O02.020', 'O02.020', 'O02.020', 'O02.020', 'O02.020', 'O02.020.011', 'O02.020.012', 'O02.020.013', 'O02.020.020', 'O02.020.021', 'O02.020.030', 'O02.020.031', 'O02.020.040', 'O02.020.060', 'O02.020.070', 'O02.020.090', 'O03.0015', 'O03.0015', 'O03.0022', 'O03.0022', 'O03.0070', 'O03.0090', 'O03.0100', 'O03.0131', 'O03.0131', 'O03.0132', 'O03.0132', 'O03.0230', 'O03.0230', 'O03.0242', 'O03.0242', 'O03.0290', 'O03.0310', 'O03.0361', 'O03.0361', 'O03.0362', 'O03.0362', 'O03.0390', 'O03.0390', 'O03.0400', 'O03.0400', 'O09MO700', 'O09MO700', 'PAI400.0010', 'PAI400.0010', 'PAI500.0010', 'PAM100.0010', 'PAM120.0010', 'PAM140.0022', 'PAM140.0022', 'PAM140.0022', 'PAM140.0022', 'PAM150.0010', 'PAM150.0010', 'PAM150.0010', 'PAM150.0010', 'PAM600.0010', 'PAM600.0010', 'PAM600.0020', 'PAM600.0020', 'PAM700.0010', 'PAM700.0011', 'PAM700.0012', 'PAM800.0010', 'PAM800.0010', 'PAM800.0018', 'PAM800.0018', 'PAR100.0010', 'PAR100.0010', 'PAR100.0010', 'PAR100.0010', 'PAR100.0010', 'PAR300.0050', 'PAR300.0050', 'PCA300.0010.0030', 'PCA300.0010.0030', 'PCA300.0010.0030', 'PCA300.0010.0030', 'PCA300.0010.0030', 'PCP100.0020.40', 'PCP100.0020.40', 'PCP200.0010', 'PCP200.0010', 'PCP200.0020', 'PCP200.0020', 'PCS100.0010', 'PCS100.0010', 'PCS100.0010', 'PCS100.0010', 'PCS100.0017', 'PCS100.0017', 'PCS100.0017', 'PCS100.0017', 'PCS100.0017.1', 'PCS100.0017.1', 'PCS100.0017.1', 'PCS100.0017.1', 'PCS100.0020', 'PCS100.0020', 'PCS100.0020', 'PCS100.0020', 'PCS100.0020', 'PCS100.0024', 'PCS100.0024', 'PCS100.0024', 'PCS100.0024', 'PCS100.0028', 'PCS100.0028', 'PCS100.0028', 'PCS100.0028', 'PCS100.0032', 'PCS100.0032', 'PCS100.0032', 'PCS100.0032', 'PCS100.0100', 'PCS100.0110', 'PCS100.0110', 'PCS100.0110', 'PCS300.0100', 'PCS400.0016', 'PCS500.0010', 'PCS500.0010', 'PCS500.0010', 'PCS500.0010', 'PCS500.0010', 'PCS500.0011', 'PCS500.0011', 'PCS500.0011', 'PCS500.0011', 'PCS500.0011', 'PCS500.0013', 'PCS500.0014', 'PCS500.0014', 'PDE100.0010', 'PEA100.0010', 'PEA100.0010', 'PEA100.0010', 'PEA300.0010', 'PEA300.0010', 'PEA300.0110', 'PEA300.0310', 'PHE100.0010', 'PHE100.0010', 'PHO100.0010', 'PHO100.0010', 'PHO100.0010', 'PHO100.0010', 'PHO100.0010', 'PHO100.0010', 'PHO100.0010', 'PHO100.0010', 'PI1101.0001', 'PI1101.0001', 'PI1101.0001', 'PI1101.0001', 'PI1101.0001', 'PI1101.2001', 'PI1101.2001', 'PI1101.2001', 'PI1101.2001', 'PI1101.2001', 'PI1201.0001', 'PI1201.0010', 'PI1201.0030', 'PI1201.0040', 'PI1201.0040', 'PI1201.0040', 'PI1201.0050', 'PI1201.0050', 'PI1201.0050', 'PI1201.2001', 'PI1201.2030', 'PI1201.2030', 'PI1201.2030', 'PI1201.2040', 'PI1201.2050', 'PI1201.2050', 'PI1201.2050', 'PI1201.2050', 'PI1201.2060', 'PI1201.2060', 'PI1201.2060', 'PI1201.5001', 'PI1201.5001', 'PI1201.5001', 'PI1201.5001', 'PI1201.5002', 'PI1201.5002', 'PI1201.5002', 'PI1201.5002', 'PI1201.5003', 'PI1201.5003', 'PI1201.5003', 'PI1201.5003', 'PI1201.5003', 'PI1201.5003', 'PI1301.4000', 'PI1301.4000', 'PI1301.4000', 'PI1301.4001', 'PI1301.4001', 'PI1301.4001', 'PI1301.4002', 'PI1301.4002', 'PI1301.4002', 'PI1301.4003', 'PI1301.4003', 'PI1301.4003', 'PI1301.4010', 'PI1301.4010', 'PI1301.4010', 'PI1301.4011', 'PI1301.4011', 'PI1301.4011', 'PI1301.4012', 'PI1301.4012', 'PI1301.4012', 'PI1301.4013', 'PI1301.4013', 'PI1301.4013', 'PI1301.4500', 'PI1301.4500', 'PI1301.4501', 'PI1301.4501', 'PI1301.4501', 'PI1301.4502', 'PI1301.4502', 'PI1301.4502', 'PI1301.4503', 'PI1301.4503', 'PI1301.4503', 'PI1301.4504', 'PI1301.4504', 'PI1301.4504', 'PI1301.4505', 'PI1301.4505', 'PI1301.4505', 'PI1301.5000', 'PI1301.5000', 'PI1301.5001', 'PI1301.5001', 'PLI100.0010', 'PLI100.0020', 'PMM100.0010', 'PMM100.0010', 'PMM100.0020', 'PMM100.0020', 'PMO100.0012', 'PMO100.0012', 'PMO100.0012', 'PMO100.0012', 'PMO100.0012', 'PMO100.0012', 'PMO100.0021', 'PMO100.0021', 'PMO100.0021', 'PMO100.0021', 'PMO100.0021', 'PMO100.0021', 'PMO100.0021', 'PMO100.0022', 'PMO100.0022', 'PMO100.0022', 'PMO100.0022', 'PMO100.0022', 'PMO100.0022', 'PMO100.0022', 'PMO100.0032', 'PMO100.0032', 'PMO100.0032', 'PMO100.0032', 'PMO100.0032', 'PMO100.0032', 'PMO100.0032', 'PMO200.0010', 'PMO200.0012', 'PMO200.0012', 'PMO200.0012', 'PMR100.0050', 'PMR100.0050', 'PMR100.0050', 'PMR100.0050', 'PMR100.0082', 'PMR100.0082', 'PMR100.0082', 'PPI100.002', 'PPI100.002', 'PPI100.002', 'PPI100.002', 'PPI100.004', 'PPI100.004', 'PPI100.004', 'PPI100.004', 'PPI100.050', 'PPI100.050', 'PPI100.050', 'PPI200.010', 'PPI200.010', 'PPI200.030', 'PPI200.030', 'PPI200.030', 'PPI200.030', 'PPI300.020', 'PPI300.020', 'PPI300.020', 'PPI300.024', 'PPI300.024', 'PPI300.024', 'PPI400.012b', 'PPI400.012b', 'PPI400.012b', 'PPI400.012b', 'PRE400.0018', 'PRE400.0018', 'PRE500.0010', 'PRE500.0010', 'PRM100.0020', 'PRM400.0040', 'PRP900.0052b', 'PRP900.0052b']
+
+            elements_inferior = ['1.00', '2.00', '3.00', '4.00', '6.00', '7.00', '8.00', '9.00', '10.00', '11.00', '12.00', '14.00', '15.00', '16.00', '17.00', '18.00', '19.00', '20.00', '21.00', '22.00', '23.00', '24.00', '25.00', '26.00', '27.00', '28.00', '29.00', '30.00', '31.00', '32.00', '33.00', 'O03.0390', 'PEA100.0010', '07.02.01.01D', '07.02.01.02D', '07.02.01.03D', '07.02.01.04', '07.02.01.01D', '07.02.01.02D', '07.05.01.04', '07.02.01.02D', '07.08.01.01', '1.01', '1.02', '1.03', '1.06', 'PRZ100.0010', 'PAI400.0010', 'M50.000.010', 'M50.000.012', 'M50.000.030', 'M50.000.040', 'M50.000.050', 'M50.000.035', 'M50.000.036', '01.04.01', '10.01', '10.02', '10.01.01D', '10.01.02D', '10.01.03', '11.01', '11.02', '11.03', '11.04', '11.05', '11.06', '11.07', '11.08', '11.09', '11.10', '11.11', '11.12', '11.13', 'PPI100.004', 'PPI400.012b', 'PPI100.004', 'PPI100.004', 'PPI100.002', 'PPI100.050', 'PPI100.002', 'PPI100.050', 'PPI100.002', 'PPI100.050', 'PPI100.050', 'PPI100.050', 'PPI200.010', 'PPI300.020', 'PPI300.024', 'PPI300.024', '12.17', '12.18', '12.19', '12.01', '12.07', '12.08', '14.01', '14.02', 'PCA300.0010.0030', '14.02.01', 'O03.0230', '15.01', '15.02', 'PMR100.0050', 'PMR100.0050', '16.01', '16.02', 'PI1101.0001', 'PI1101.2001', 'PI1201.0050', 'PI1201.2030', '17.01', '17.02', '2.02', '2.03', '2.04', '2.05', '2.06', '2.07', '2.08', '2.09', '2.11', 'PDE100.0010', 'PDE100.0010', 'PDE100.0010', 'PDE100.0010', 'PDE100.0010', '02.08.01', '02.08.01', 'M19.000.150', 'M19.000.200', '22.01', '22.02', '22.03', '22.04', '22.07', '22.08', '22.09', '22.10', '22.05', '22.06', '22.05.01', '22.05.02', '22.05.03', '22.05.04', 'PHE100.0010', '22.05.03.01', '22.05.03.02', '22.05.03.03', '22.05.03.02', '22.05.04.01', '22.05.04.02', '22.05.03.01', '22.05.03.02', '22.05.05.01', '22.06.01', '22.05.05', '24.01', '24.02', '24.03', '24.04', '24.05', '24.07', '24.08', '24.09', '24.10', '24.11', '24.12', '24.13', '24.14', '24.15', '24.01.06D', '24.02.06D', '24.04.06D', '24.04.02D', '24.05.03D', '24.07.02D', '24.08.02D', '24.09.02D', '24.10.02D', '24.11.03D', '24.12.03D', '24.13.02D', '24.14.02D', '24.15.03D', '26.01', '26.02', '26.03', '26.04', '26.05', '26.06', '26.07', '27.01', '28.01', '28.02', '28.03', 'PCI100.0001', 'PCI100.0001', 'PCI100.0002', '3.01', '3.02', '3.02.1', '3.03', '3.04', '3.05', '3.06', 'PCP200.0010', 'PCP200.0020', 'PCP100.0020.40', 'PRE500.0010', 'PRE400.0018', 'PAR100.0010', 'PRM400.0040', 'O03.0015', '30.01', '30.02', 'PLI100.0010', 'PLI100.0020', '31.01', '32.01', '32.02', 'PCI100.0014', 'PCI100.0012', '33.01', '33.02', '33.03', '4.01', '4.02', '4.03', '4.04', '4.05', '4.06', '4.07', '4.08', '4.09', '4.10', '4.11', '4.12', '4.13', '4.14', '4.15', 'PCS100.0010', '04.01.01', 'PCS100.0017', '04.02.01', 'PCS100.0020', '04.03.01', 'PCS100.0024', '04.04.01', 'PCS100.0032', '04.05.01', 'PCS100.0028', 'PCS100.0100', 'PCS300.0100', '04.06.01', 'PCS100.0017.1', '04.07.01', 'PCS100.0017', '04.08.01', 'PCS100.0024', '04.09.01', 'PCS300.0100', '04.10.01', 'PCS100.0100', '04.11.01', 'PCS300.0100', '04.12.01', 'PCS100.0110', '04.13.01', 'PCS100.0110', '04.14.01', 'M08.020.0010.b', '04.15.01', '6.01', '06.01.02D', '06.01.03D', '06.01.04', '06.01.05', '7.01', '7.02', '7.03', '7.05', '7.06', '7.08', '7.09', '7.11', '7.12', '7.13', '7.13.1', '7.14', '07.01.01D', '07.02.01', '07.03.01D', '07.05.01', '07.06.01D', '07.08.01', '07.09.01D', '07.05.01', '07.01.01D', '07.02.01', '8.01', 'PRP900.0052b', '9.01', 'PRM100.0020', 'O02.010.011', 'O02.010.012', 'O02.010.013', 'O02.010.020', 'O02.010.021', 'O02.010.030', 'O02.010.031', 'O02.010.040', 'O02.010.050', 'O02.010.060', 'O02.010.070', 'O02.010.080', 'O02.010.090', 'O01.102', 'O01.102', 'O01.102', 'O01.102', 'O01.102', 'O01.102', 'O01.102', 'O01.102', 'O01.102', 'O01.102', 'O01.102', 'O02.020.011', 'O02.020.012', 'O02.020.013', 'O02.020.020', 'O02.020.021', 'O02.020.030', 'O02.020.031', 'O02.020.040', 'O02.020.050', 'O02.020.060', 'O02.020.070', 'O02.020.080', 'O02.020.090', 'O01.104', 'O01.104', 'O01.104', 'O01.104', 'O01.104', 'O01.104', 'O01.104', 'O01.104', 'O01.104', 'O01.104', 'O01.104', 'O01.022', 'O02.010', 'O01.022', 'O02.020', 'O01.903', 'O01.903', 'O01.902', 'O01.022', 'O02.010', 'O01.022', 'O02.010', 'O01.042', 'O02.020', 'O01.042', 'O02.020', 'O01.903b', 'O01.903b', 'O01.042', 'O02.020', 'O01.042', 'O02.020', 'O01.042', 'O02.020', 'O01.043', 'O02.020', 'O01.043', 'O02.020', 'M08.010.0101', 'PAI500.0010', 'O03.0230', 'PAM600.0020', 'O03.0015', 'PAM800.0018', 'PAM600.0010', 'PAM700.0010', 'PAM700.0011', 'PAM800.0010', 'PAM600.0010', 'PAM700.0010', 'PAM700.0012', 'O03.0015', 'O03.0230', 'O03.0015', 'O03.0230', 'O03.0015', 'O03.0015', 'O03.0015', 'O03.0015', 'O03.0230', 'O03.0015', 'O03.0230', 'M07.030.0011', 'M07.010.0001', 'M07.030.0012', 'O03.0131', 'O03.0361', 'O03.0132', 'O03.0362', 'M13.030.0010', 'M13.060.0001', 'M13.030.0130', 'PCA099.0045', 'PCA099.0040', 'PHO100.0010', 'PAM140.0022', 'PMO100.0012', 'PAM150.0010', 'PMO100.0022', 'PAM150.0010', 'M10.050.0004', 'PCS500.0010', 'PCS500.0013', 'PCS500.0014', 'M10.050.0004', 'PCS500.0010', 'PCS500.0013', 'PCS500.0014', 'M10.050.0004', 'PCS500.0010', 'PCS500.0013', 'PCS500.0014', 'M10.050.0004', 'M10.050.0010', 'PCS500.0010', 'PCS500.0013', 'PCS500.0014', 'M10.050.0004', 'PCS500.0010', 'PCS500.0013', 'PCS500.0014', 'M10.050.0004', 'PCS500.0010', 'PCS500.0013', 'PCS500.0014', 'M10.050.0004', 'PCS500.0011', 'PCS500.0013', 'PCS500.0014', 'M10.070.0024', 'M10.070.0011', 'M04.200.0030', 'PCS400.0016', 'M10.070.0025', 'M10.075.0012', 'M10.070.0011', 'M10.070.0014', 'M10.075.0010', 'M10.075.0018', 'M10.075.0019', 'M10.070.0010', 'M10.070.0013', 'M10.075.0010', 'M10.075.0018', 'M10.075.0020', 'M10.075.0012', 'M10.060.0010', 'M10.060.0020', 'O03.0390', 'PEA300.0010', 'PEA300.0110', 'PEA300.0310', 'M03.200.0060D', 'O03.0100', 'O03.0100', 'PPI200.030', 'M03.000.002D', 'O03.0100', 'M01.500.0010', 'M01.400.0010', 'M01.100.0010', 'M01.200.0020', 'M07.010.0001', 'PMM100.0020', 'PMM100.0010', 'PMO200.0010', 'PI1201.0001', 'PI1201.0010', 'PI1201.0030', 'PI1201.0040', 'PI1201.0050', 'PI1201.2001', 'PI1201.2030', 'PI1201.2040', 'PI1201.2050', 'PI1201.2060', 'PI1201.5002', 'PI1201.5001', 'PI1201.5001', 'M14.000.001', 'O03.0090', 'O03.0310', 'M14.000.001', 'O03.0090', 'O03.0310', 'PI1201.5003', 'M14.000.001', 'O03.0090', 'O03.0310', 'O03.0015', 'M14.400.024', 'M14.400.001', 'O03.0090', 'O03.0310', 'M14.400.072', 'O03.0090', 'O03.0310', 'PI1301.4000', 'PI1301.4001', 'PI1301.4002', 'PI1301.4003', 'PI1301.4010', 'PI1301.4011', 'PI1301.4012', 'PI1301.4013', 'PI1301.4501', 'PI1301.4502', 'PI1301.4503', 'PI1301.4504', 'PI1301.4505', 'M14.000.310', 'M14.000.100', 'M14.000.110', 'PI1301.5000', 'M14.000.101', 'M14.000.111', 'PI1301.5000', 'M14.000.102', 'M14.000.112', 'PI1301.5000', 'M14.000.103', 'M14.000.113', 'PI1301.5000', 'M14.000.100', 'M14.000.110', 'PI1301.5001', 'M14.000.101', 'M14.000.111', 'PI1301.5001', 'M14.000.102', 'M14.000.112', 'PI1301.5001', 'M14.000.103', 'M14.000.113', 'PI1301.5001', 'O03.0090', 'O03.0310', 'M14.000.300', 'M14.000.311', 'PI1301.4500', 'M14.000.301', 'M14.000.312', 'PI1301.4500', 'M14.000.303', 'M14.000.313', 'PI1301.4500', 'M14.000.304', 'M14.000.314', 'PI1301.4500', 'M14.000.305', 'M14.000.315', 'PI1301.4500', 'O03.0090', 'O03.0310', 'O03.0090', 'O03.0310', 'O03.0400', 'O01.903b', 'O09MO700', 'E21.020.0310', 'O09MO700', 'E21.020.0310', 'M01.500.0010', 'M01.100.0010', 'M07.010.0001', 'PMO200.0010', 'PMM100.0020', 'PMM100.0010', 'M01.500.0010', 'M01.100.0010', 'M07.010.0001', 'M07.020.0010', 'PMO200.0010', 'PMM100.0020', 'PMM100.0010', 'M01.500.0010', 'M01.100.0010', 'M07.010.0001', 'M07.020.0010', 'PMO200.0010', 'PMM100.0020', 'PMM100.0010', 'M01.500.0010', 'M01.400.0010', 'M01.100.0010', 'M07.010.0001', 'PMO200.0010', 'PMM100.0020', 'PMM100.0010', 'PMO200.0012', 'E21.020.0185', 'O03.0022', 'O03.0242', 'M02.200.0020D', 'PMR100.0082', 'PMR100.0080', 'PMR100.0081', 'O03.0015', 'O03.0230', 'M03.200.1050D', 'M17.010.005', 'M17.010.036', 'O03.0290', 'O03.0070', 'M17.010.012', 'M17.010.036', 'O03.0290', 'O03.0070', 'O03.0290', 'O03.0070', 'M17.010.044', 'M17.010.018', 'O03.0070', 'M17.010.063', 'M17.010.019', 'M17.010.034', 'O03.0070', 'M17.010.018', 'M17.010.036', 'O03.0070', 'M17.010.014', 'M17.010.036', 'O03.0070', 'M17.010.021', 'M17.010.036', 'O03.0290', 'O03.0070', 'PMO100.0032', 'PAM120.0010', 'PMO100.0021', 'PAM100.0010', 'M17.030.0004', 'O03.0131', 'PAR300.0050', 'M11.200.0024b']
+
+            NatC = ['Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Capítulo', 'Partida', 'Partida', 'Material', 'Material', 'Material', 'Mano de obra', 'Material', 'Material', 'Mano de obra', 'Material', 'Mano de obra', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Partida', 'Partida', 'Material', 'Material', 'Mano de obra', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Material', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Material', 'Material', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Mano de obra', 'Partida', 'Mano de obra', 'Partida', 'Mano de obra', 'Partida', 'Mano de obra', 'Partida', 'Mano de obra', 'Partida', 'Partida', 'Partida', 'Mano de obra', 'Partida', 'Mano de obra', 'Partida', 'Mano de obra', 'Partida', 'Mano de obra', 'Partida', 'Mano de obra', 'Partida', 'Mano de obra', 'Partida', 'Mano de obra', 'Partida', 'Mano de obra', 'Partida', 'Mano de obra', 'Material', 'Mano de obra', 'Partida', 'Material', 'Material', 'Mano de obra', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Material', 'Partida', 'Material', 'Partida', 'Material', 'Partida', 'Material', 'Partida', 'Material', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Mano de obra', 'Partida', 'Partida', 'Mano de obra', 'Partida', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Mano de obra', 'Partida', 'Partida', 'Mano de obra', 'Partida', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Partida', 'Mano de obra', 'Partida', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Partida', 'Mano de obra', 'Partida', 'Mano de obra', 'Partida', 'Mano de obra', 'Partida', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Partida', 'Mano de obra', 'Partida', 'Mano de obra', 'Partida', 'Mano de obra', 'Partida', 'Mano de obra', 'Partida', 'Material', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Material', 'Material', 'Material', 'Partida', 'Partida', 'Partida', 'Partida', 'Material', 'Material', 'Material', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Material', 'Partida', 'Partida', 'Partida', 'Material', 'Partida', 'Partida', 'Partida', 'Material', 'Partida', 'Partida', 'Partida', 'Material', 'Material', 'Partida', 'Partida', 'Partida', 'Material', 'Partida', 'Partida', 'Partida', 'Material', 'Partida', 'Partida', 'Partida', 'Material', 'Partida', 'Partida', 'Partida', 'Material', 'Material', 'Material', 'Partida', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Partida', 'Partida', 'Partida', 'Partida', 'Material', 'Partida', 'Partida', 'Partida', 'Material', 'Partida', 'Material', 'Material', 'Material', 'Material', 'Material', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Material', 'Partida', 'Partida', 'Material', 'Partida', 'Partida', 'Partida', 'Material', 'Partida', 'Partida', 'Partida', 'Material', 'Material', 'Partida', 'Partida', 'Material', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Material', 'Material', 'Material', 'Partida', 'Material', 'Material', 'Partida', 'Material', 'Material', 'Partida', 'Material', 'Material', 'Partida', 'Material', 'Material', 'Partida', 'Material', 'Material', 'Partida', 'Material', 'Material', 'Partida', 'Material', 'Material', 'Partida', 'Partida', 'Partida', 'Material', 'Material', 'Partida', 'Material', 'Material', 'Partida', 'Material', 'Material', 'Partida', 'Material', 'Material', 'Partida', 'Material', 'Material', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Mano de obra', 'Partida', 'Maquinaria', 'Partida', 'Maquinaria', 'Material', 'Material', 'Material', 'Partida', 'Partida', 'Partida', 'Material', 'Material', 'Material', 'Material', 'Partida', 'Partida', 'Partida', 'Material', 'Material', 'Material', 'Material', 'Partida', 'Partida', 'Partida', 'Material', 'Material', 'Material', 'Material', 'Partida', 'Partida', 'Partida', 'Partida', 'Maquinaria', 'Partida', 'Partida', 'Material', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Material', 'Material', 'Material', 'Partida', 'Partida', 'Material', 'Material', 'Partida', 'Partida', 'Partida', 'Partida', 'Material', 'Material', 'Partida', 'Material', 'Material', 'Material', 'Partida', 'Material', 'Material', 'Partida', 'Material', 'Material', 'Partida', 'Material', 'Material', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Material', 'Partida', 'Partida', 'Material']
+
+            descripcion = ['PRELIMINARES', 'DEMOLICIÓN', 'ALBAÑILERIA', 'TABIQUES EN PLACAS DE ROCA DE YESO', 'CIELORRASO ESPECIAL', 'PAVIMENTOS', 'ZOCALOS', 'REVESTIMIENTO PORCELANATO', 'REVESTIMIENTOS ESPECIALES', 'PINTURA', 'FRENTES DE VIDRIO', 'PUERTAS', 'MESADAS GRANITO', 'INSTALACION SANITARIA', 'ARTEFACTOS SANITARIOS (provisión)', 'INSTALACION ELECTRICA Y CABLEADO ESTRUCTURADO', 'INSTALACION DETECCIÓN DE INCENDIO', 'INSTALACION EXTINCIÓN DE INCENDIO', 'ARTEFACTOS DE ILUMINACIÓN', 'MUEBLES ESPECIALES', 'ARCHIVO DESLIZANTE', 'MUEBLES DE LÍNEA', 'SILLAS', 'MUEBLES IN BETWEEN', 'CORTINAS', 'SEGURIDAD E HIGIENE', 'GRAFICA Y SEÑALIZACION', 'LIMPIEZA DE OBRA', 'PERSONAL EN OBRA', 'HONORARIOS PROFESIONALES', 'GASTOS GENERALES Y BENEFICIO', 'Ayudante demolición', 'Estructura de acero liviana', 'Masa niveladora 4Kg', 'Adhesivo 23Kg', 'Cordón de soldadura Rollo 50m', 'Colocación piso vinílico en rollo - Il Rivestimento', 'Masa niveladora 4Kg', 'Adhesivo 23Kg', 'Colocación piso vinílico heterogéneo - Il Rivestimento', 'Adhesivo 23Kg', 'Colocación de alfombra modular - Il Rivestiimeto', 'Replanteo', 'Protecciones para interiores ( nylon y cartón corrugado ). Considerar en sectores en donde se colocará el piso vinílico y camino', 'Oficina Técnica Dirección de Obra y SeH', 'Matafuegos reglamentarios', 'Replanteo terreno - Agrimensor', 'Aislación barrera vapor film polietileno 100mic', 'Alquiler obrador 6.00m x 2.40m con aire acondicionado', 'Alquiler obrador - Flete entrega o retiro', 'Servicio de internet', 'Alquiler dispenser de agua hasta 8 bidones de 20lts', 'Aire Acondicionado split frio/calor 2800f 3300w', 'Servicio de alarma - kit (Incluye detector de movimiento, sirena interior y exterior)', 'Servicio de alarma - Monitoreo', 'Matafuegos Polvo Abc 5 Kg', 'R 01 | Revestimiento de fieltro acustico. Modelo: Beam Vainilla 6 cm. Altura: 2,65 mts. Color: verde ingles. Espesor: 9mm. Inclu', 'Tapacanto laqueado. Medida 0,12mts x 2,40mts', 'Kuaiet – Beam Paneles de 1200 x 2700 x 9mm', 'Wepel 2000 - Cemento de Contacto x 18lt', 'Revestimiento de fieltro acústico - Mano de obra', 'Preparación y pintado de cielorrasos continuos con látex mate blanco.', 'Preparación y pintado de losa a la vista. Color Gris Cable (Alba)', 'Preparación y pintado de bandas de ajuste con látex mate blanco.', 'Preparación y pintado de gargantas, cajón cortinero, saltos de nivel, cajón L, hasta 1,00mts con látex mate blanco.', 'Preparación y pintado de muros y tabiques con látex satinado blanco', 'Preparación y pintado de muros y tabiques existentes con látex satinado blanco', 'Preparación y pintado de muros y tabiques con látex satinado tintométrico. Tono a definir', 'Preparación de muros y tabiques, para recibir revestimiento acústico', 'Preparación de paredes para colocación de gráfica.', 'Pintado de puertas existentes (ingreso a núcleo de baño). Marco metálico y hoja de madera. Con esmalte sintético, mate.', 'Z1 - Zócalo en mdf. Pintura color blanco. H: 7cm', 'Z1 - Zócalo en mdf. Pintura Tintométrica. H: 7cm', 'Flete para entrega y descarga de materiales, viáticos y alojamiento del personal', 'Pintura interior cielorraso', 'Pintura protector para hormigón', 'Pintura interior cielorraso', 'Pintura interior cielorraso', 'Pintura interior satinada muro', 'Enduído completo muro interior', 'Pintura interior satinada muro', 'Enduído completo muro interior', 'Pintura interior satinada muro', 'Enduído completo muro interior', 'Enduído completo muro interior', 'Enduído completo muro interior', 'Pintura convertidor-esmalte sintético (s/metálica)', 'Pintura esmalte sintético (s/madera)', 'Pintura barniz sintético (s/zócalos)', 'Pintura barniz sintético (s/zócalos)', 'FV 17 | Medidas paño fijo: 1200mm x 2400mm. Medidas paño fijo superior : 2200mm x 1400mm. Medida vano de puerta: 1000mm. Con pic', 'FV 18 | Medidas paño fijo: 4610mm x 2700mm. Medidas paño fijo superior : 5600 mm x 1400mm. Medida vano de puerta: 1000mm. Con pi', 'MEDICIÓN, ENTREGA Y COLOCACIÓN EN OBRA', 'Desarme y rearmado frentes vidriados de oficinas actuales', 'FV 07 | Paño Fijo y puerta de abrir. Medidas paño fijo: 700mm x 2400mm. Medida vano de puerta: 900mm', 'FV 08 | Paño Fijo y puerta de abrir. Medidas paño fijo: 700mm x 2400mm. Medida vano de puerta: 900mm', 'P02 | Marco de chapa y Hoja de puerta Placa simple, hoja MDF con relleno tipo panal de abeja. Terminación: Laqueada (Tono a defi', 'Topes de puerta. Modelo: Media Esfera Acero Goma. Provisión y colocación. Corresponde a todas las puertas de la obra.', 'Puerta placa a medida (marco de chapa) - 80x200', 'Tope Piso puerta media esfera Acero Goma', 'Ayudante albañil', 'ME 10 | Mesada en granito Negro Brasil Leather. e: 25mm. Medidas: 0,60 mts x 3,00mts', 'ME 11 |  Mesada en granito Negro Brasil Leather. e: 25mm. Medidas: 0,70 mts x 2,00mts. Zócalo en mismo material. H: 10cm. Largo:', 'Mesada de granito negro brasil extra 2cm', 'Mesada de granito negro brasil extra 2cm', 'Instalación en coffee. Se considera para agua fría y caliente, cañería PP termofusión 13, accesorios y piezas especiales, llaves', 'Colocación de artefactos en coffee.', 'Instalación cloacal - Desagüe cloacal por artefacto', 'Instalación agua fría y caliente - Suministro por artefacto', 'Instalación clocal - Colocación de artefacto sanitario', 'Instalación agua fría y caliente - Colocación de grifería', 'Bacha de Cocina. JOHNSON Quadra A304 Q37(C/SOPAPA)', 'Grifería de Cocina. FV monocomando ARIZONA. 0411.02/B1CR', 'Retiro de piso de madera', 'Demolición de carpeta bajo piso de madera.', 'Demolición de muros de mampostería', 'Demolición de tabiquería en roca de yeso', 'Retiro de frentes de oficina.', 'Desarme de tabiques bajos de escritorios', 'Desarme de muebles. Se dejarán a desarmados a disposición del cliente.', 'Retiro de puertas.', 'Contratación por alquiler de volquete. Incluye mano de obra para carga y descarga', 'Demolición material albanilería (manual)', 'Demolición material albanilería (manual)', 'Demolición material albanilería (manual)', 'Demolición material albanilería (manual)', 'Demolición material albanilería (manual)', 'Global desarme demolición', 'Global desarme demolición', 'Volquete 5m3', 'Certificado disposición final', 'ME01-02-03- Módulo Lockers. Incluye R 02 (Revestimiento melaminico MDF simil madera. Modelo: Camellia - Faplac. Altura: 2,65 mts', 'ME04 - Guardado Alto.', 'ME04B - Guardado Alto.', 'ME05 - Módulo Lockers.', 'ME10 - Barra coffee', 'ME11 - Mueble coffee', 'Medición, Entrega y Armado en obra.', 'Viaticos y Alojamiento', 'ME06-07-08 Espacio colaborativo - Treillage, Bancada en madera y Bancada tapizada', 'ME09 - Bancada coffee', 'ME06-07-08 Espacio colaborativo - Treillage, Bancada en madera y Bancada tapizada', 'Adicional ME06 - Recubrimiento con chapa de zócalo', 'Adicional ME07 - Almohadón circular', 'Adicional ME08 - Tapizado', 'Herrería general', 'Relleno - goma espuma de alta densidad 5cm de altura', 'Tapicería - Tela antimancha', 'Mano de obra', 'Tapicería - Tela antimancha', 'Relleno - goma espuma de alta densidad 2cm de altura', 'Mano de obra', 'Relleno - goma espuma de alta densidad 5cm de altura', 'Tapicería - Tela antimancha', 'Mno de obra', 'ME09 - Bancada coffee', 'Adicional ME09 - Almohadones', 'ML 01 | Isla 6 px. Puestos enfrentados. Sistema Natur Metálico. Planos de trabajo de 1500mm x 700mm x 740mm de altura. Tapa de m', 'ML 02 | Isla 4px. Puestos enfrentados. Sistema Natur Metálico. Planos de trabajo de 1500mm x 700mm x 740mm de altura. Tapa de me', 'ML 03 | Escritorio individual. Sistema Natur Metálico. Planos de trabajo de 1500mm x 700mm x 740mm de altura. Tapa de melamina l', 'ML 04 | Guardado bajo. Medidas 900mm x 450mm x 740mm de altura. Construido en melamina nórdica, color a definir, con 2 puertas b', 'ML 05 | Guardado bajo. Medidas 1400mm x 450mm x 740mm de altura. Construido en melamina nórdica, color a definir, con 3 puertas', 'ML 07 | Guardado alto. Medidas 900mm x 600mm x 2400mm de altura. Construido en melamina nórdica, color a definir, con 2 puertas', 'ML 07B | Guardado alto.  Medidas 600mm x 600mm x 2400mm de altura. Construido en melamina nórdica, color a definir, con 2 puerta', 'ML 08 | Puesto fijo. Sistema Natur Metálico. Planos de trabajo de 1900mm x 600mm x 740mm de altura. Tapa de melamina nórdica, co', 'ML 08B | Casework 23. Sistema Natur Metálico. Planos de trabajo de 1400mm x 600mm x 740mm de altura. Tapa de melamina nórdica, c', 'ML 09 | Mesa de reunión. Sistema Natur Metálico. Medidas 2400mm x 1200mm x 740mm de altura. Tapa de melamina lisa, color blanco', 'ML 10 | Mesa circular. Sistema Natur Metálico. Medidas 900mm Ø X 740mm de altura. Tapa de melamina lisa, color negro de 18mm de', 'ML 11 | Mesa circular alta. Sistema Natur Metálico. Medidas 1000mm Ø X 1050mm de altura. Tapa de melamina lisa, color blanco de', 'ML 12 | Mesa circular reuniones.  Sistema Natur Metálico. Medidas 1200mm Ø X 740mm de altura. Tapa de melamina lisa, color blanc', 'Flete para entrega, descarga y armado en obra. Incluye viáticos y alojamiento del personal', 'ML01-ISLA DE 6 PUESTOS - Línea K', 'ML02 - ISLA DE 4 PUESTOS - Linea K', 'ML03 - ESCRITORIO SIMPLE - Línea K', 'ML04 - MUEBLE DE GUARDADO - Línea K', 'ML05 - MUEBLE DE GUARDADO - Línea K', 'ML07 - GUARDADO ALTO - Línea K', 'ML07B - GUARDADO ALTO - Línea K', 'ML08 - PUESTO FIJO - Línea K', 'ML08B - CASSEWORK 23 - Línea K', 'ML09 - MESA DE REUNION - Línea K', 'ML10 - MESA DE REUNION', 'ML11 - MESA CIRCULAR ALTA - Línea K', 'ML12 - MESA DE REUNION CIRCULAR - Línea K', 'FLETE E INSTALACIÓN - EN SANTA FE  - LUNES A VIERNES DE 8', 'MC 02 | Silla tapizada en tela spazio, color a definir. Estructura metálica, giratoria cromada.', 'MC 03 | Silla tapizada en tela spazio, color a definir. Estructura fija de 4 patas de madera.', 'MC 04 | Banqueta tapizada en tela spazio, color a definir. Estructura a 4 patas fijas de madera.', 'MC 05 | Puff de 400 mm Ø X 450 mm de altura. Tapizado en tela spazio, color a definir. Base con regatones.', 'MC 06 | Silla Modelo. Con apoyabrazos, colores visón y verde.', 'MC 07 | Mesa de arrime. Medidas 400mm x 400mm x 650mm de altura. Construida en chapa metálica, color negro.', 'MC 11 | Mesa medidas 700mm x 420mm de altura. Tapa de melamina nórdica de 25mm. Base de caño negro microtexturado.', 'Desmontaje y reinstalación de cortinas existentes.', 'Higiene y Seguridad en el Trabajo; incluye coordinación y supervisión documentación, y entrega de elementos protección personal', 'Firma de programa de Seguridad e Higiene y Profesional  Responsable  de  servicio, Licenciado.  (Corresponde a 4  visitas  al me', 'Técnico de SeH permanente en horario de obra.', 'Higiene y seguridad - Visitas mensuales', 'Higiene y seguridad - Visitas mensuales', 'Higiene y seguridad - Técnico permanente', 'Carpeta nueva', 'Carpeta con hidrófugo en sector de barra de Coffe.', 'Completamiento de ex sector de Sala de máquinas. Contrapiso de HHRP (40cm de profundidad).', 'Reparación de revoques en exterior de núcleo de baño. Incluye hidrófugo.', 'Colocación de revestimiento en Coffe. Incluye material para juntas.', 'Ayuda de gremios', 'Flete para entrega y descarga de materiales, viáticos y alojamiento del personal', 'Carpeta fratasada, espesor 2cm', 'Carpeta hidrófuga fratasada, espesor 2cm', 'Contrapiso hormigón pobre, espesor 40cm', 'Revoque azotado hidrófugo', 'Revoque grueso exterior fratasado (mhr)', 'Colocación revestimiento cerámico', 'Adicional revestimiento superficie chica', 'Oficial albañil', 'Limpieza diaria (incluye todos los elementos necesarios para realizar la limpieza). Incluye jabón y papel higiénico.', 'Limpieza de obra final  (incluye todos los elementos necesarios para realizar la limpieza). Incluye limpieza de vidrios lado ext', 'Limpieza diaria de obra', 'Limpieza final de obra', 'Viáticos Equipo de Dirección y Jefatura de Obra.', 'Planos conforme a Obra (incluye relevamiento en obra).', 'Dirección de Obra', 'Coordinación de rubros - Apoyo de OT grande', 'Coordinación de rubros - Equipo de obra grande', 'Seguros', 'Costos Indirectos', 'Beneficio', 'T1 - Tabique SIMPLE de dos caras. Simple placa standard 12,5 mm + estructura de 70 mm + simple placa standard 12,5 mm.', 'T2 - Tabique DOBLE de dos caras. Doble placa standard 12,5 mm + estructura de 70 mm + doble placa standard 12,5 mm.', 'T4 - Tabique DOBLE de dos caras.Doble placa resistente a la humedad 12,5 mm + estructura de 70 mm + doble placa resistente a la', 'T7 - Medioforro. Simple placa standard 12,5 mm + estructura de 70 mm', 'T10 - Medioforro. Simple placa standard 12,5 mm pegada a estructura de Hº', 'T14 - Encuentro entre tabique y courtain wall, doble placa standard, incluye buña Z y cantonera', 'ST1 | Sobretabique. DOBLE de una cara. Simple placa standard 12,5 mm + estructura de 70 mm + simple placa standard 12,5 mm.', 'ST2 | Sobretabique. DOBLE de dos caras. Doble placa standard 12,5 mm + estructura de 70 mm + doble placa standard 12,5 mm.', 'ST7 | Sobretabique. Simple placa standard 12,5 mm + estructura de 70 mm.', 'Tapacanto de placa standard de 12,5mm.', 'Cantonera en arista (provisión y colocación)', 'Perfil buña Z (tabique)', 'Refuerzo de madera 1"x 2"', 'R | Refuerzo de madera, tipo fenólico, en interior de tabiquería de placa de roca de yeso, medidas 0,40 x 1,00 m,', 'Aislación lana vidrio pesada; panel rígido lana vidrio, espesor 50mm, densidad 35 kg/m3. Se considera para todos los tabiques.', 'Pared simple, placa estándar', 'Mano de obra Paunersek', 'Pared doble, placa estándar-estándar', 'Mano de obra Paunersek', 'Pared doble, placa estándar-verde', 'Mano de obra Paunersek', 'Media pared simple, placa estándar', 'Mano de obra Paunersek', 'Revestimiento sobre estructura 35mm, placa estándar', 'Mano de obra Paunersek', 'Media pared doble, placa estándar', 'Aristas con colocación de cantoneras', 'Buña Z', 'Mano de obra Paunersek', 'Pared doble placa estándar- simple placa estándar', 'Mano de obra Paunersek', 'Pared doble, placa estándar-estándar', 'Mano de obra Paunersek', 'Media pared simple, placa estándar', 'Mano de obra Paunersek', 'Buña Z', 'Mano de obra Paunersek', 'Aristas con colocación de cantoneras', 'Mano de obra Paunersek', 'Buña Z', 'Mano de obra Paunersek', 'Refuerzos p/tabiquería durlock', 'Mano de obra Paunersek', 'Refuerzos p/tabiquería durlock', 'Mano de obra Paunersek', 'Aislante Lana De Vidrio Rígida 50 Mm 35 Kg/m3', 'Mano de obra Paunersek', 'PANELES ACÚSTICOS. Modelo Baffle. Tonos a definir. Espesor: 12mm. Incluye tensores de 150cm e Instalación.', 'Kuaiet – Baffle Paneles de 300 x 1200 x 12mm', 'Tensores', 'Cielorraso especial Baffle acústico - Mano de Obra', 'Adicional - Estructura metálica', 'S 01 | Piso vinilico en rollo. Marca TARKETT. Modelo SURFACE DIMMED AIRY 21089085.  Espesor 2mm. Ancho de rollo 2,00mts', 'S 01 | Colocación. Incluye provisión de cordón de soldadura y adhesivo.', 'S 02 | Piso vinílico en listón. Simil madera. Modelo FRESNO. Medidas 23cm x 122cm. Espesor 3mm.', 'S 02  | Colocación. Incluye provisión de adhesivo.', 'S 03 | Alfombra modular . Marca SHAW CONTRACT. Modelo Colour Plank. Color Brite Green 9535. Medidas 61cmx95cm', 'S 03 |  Colocación. Incluye provisión de adhesivo.', 'S 04 | Piso vinílico modular. Marca Tarkett. Modelo Ambienta Stone 47,5cm x 47,5cm. Espesor 3mm. Color Titanium 24034681', 'S 04 | Colocación. Incluye provisión de adhesivo con memoria.', 'S 07 | Piso vinilico en rollo. Marca TARKETT. Modelo SURFACE DIMMED ACCENT 21089164. Espesor 2mm. Ancho de rollo 2,00mts', 'S 07 | Colocación. Incluye provisión de cordón de soldadura y adhesivo.', 'Viáticos y alojamiento del personal', 'Flete para entrega en obra', 'Piso vinílico homogéneo IQ Surface – Tarkett Rollos 2x23m', 'Colocación', 'Piso vinílico heterogéneo Fresno  – Listones 187 x 1227 mm', 'Colocación piso vinílico heterogéneo', 'Alfombra modular Shaw Contract – Colour Plank', 'Colocación de alfombra', 'Piso vinílico heterogéneo Ambienta stone – Tarkett Listones de 600 x 600 mm', 'Colocación piso vinílico heterogéneo', 'Piso vinílico homogéneo IQ Surface – Tarkett Rollos 2x23m', 'Colocación', 'Provisión y colocación de zócalo MDF para pintar, borde recto de altura 7cm (provisión, corte y colocación).', 'Zócalo de madera MDF prepintado h=7 cm', 'R 03 | Revestimiento cerámico COK.GUARDA 6,9X28,5 VENETO NEGRO BRILLO. Incluye desperdicios.', 'Revestimiento cerámico COK.GUARDA 6,9X28,5 VENETO NEGRO BRILLO', 'CS SAC oficial', 'CS Fondo cese laboral oficial', 'CS Horas no trabajadas', 'CS Contribución SS oficial', 'CS Aporte SS oficial', 'CS Contribución OS oficial', 'CS Aporte OS oficial', 'CS Seguro vida obligatorio oficial', 'CS ART fijo oficial', 'CS ART variable oficial', 'CS Acuerdo Edilizia vest+herr oficial', 'CS Plus oficial normal', 'CS Vianda oficial', 'Oficial Básico p/CS', 'Oficial Básico p/CS', 'Oficial Básico p/CS', 'Oficial Básico p/CS', 'Oficial Básico p/CS', 'Oficial Básico p/CS', 'Oficial Básico p/CS', 'Oficial Básico p/CS', 'Oficial Básico p/CS', 'Oficial Básico p/CS', 'Oficial Básico p/CS', 'CS SAC Ay', 'CS Fondo cese laboral Ay', 'CS Horas no trabajadas Ay', 'CS Contribución SS Ay', 'CS Aporte SS Ay', 'CS Contribución OS Ay', 'CS Aporte OS Ay', 'CS Seguro vida obligatorio Ay', 'CS ART fijo ayudante Ay', 'CS ART variable Ay', 'CS Acuerdo Edilizia vest+herr Ay', 'CS Plus Ay común', 'CS Vianda Ay', 'Ayudante Básico p/CS', 'Ayudante Básico p/CS', 'Ayudante Básico p/CS', 'Ayudante Básico p/CS', 'Ayudante Básico p/CS', 'Ayudante Básico p/CS', 'Ayudante Básico p/CS', 'Ayudante Básico p/CS', 'Ayudante Básico p/CS', 'Ayudante Básico p/CS', 'Ayudante Básico p/CS', 'Oficial albañil', 'Cargas sociales oficial común', 'Oficial albañil', 'Cargas sociales ayudante común', 'Mano de obra Subcontratada 3° Nivel (1,3 Of + C.S.)', 'Mano de obra Subcontratada 3° Nivel (1,3 Of + C.S.)', 'Mano de obra Subcontratada 2° Nivel (2 Of + C.S.)', 'Oficial albañil', 'Cargas sociales oficial común', 'Oficial albañil', 'Cargas sociales oficial común', 'Ayudante albañil', 'Cargas sociales ayudante común', 'Ayudante albañil', 'Cargas sociales ayudante común', 'Mano de obra Subcontratada 3° Nivel (1,3 Ay + C.S.)', 'Mano de obra Subcontratada 3° Nivel (1,3 Ay + C.S.)', 'Ayudante albañil', 'Cargas sociales ayudante común', 'Ayudante albañil', 'Cargas sociales ayudante común', 'Ayudante albañil', 'Cargas sociales ayudante común', 'Ayudante movimientos', 'Cargas sociales ayudante común', 'Ayudante movimientos', 'Cargas sociales ayudante común', 'Film de polietileno (e=100 micrones)', 'Aislación tendido', 'Ayudante albañil', 'Carga y tendido mortero (cuchara) azotado', 'Oficial albañil', 'Fajeado contrapiso con pendiente', 'Carga y tendido mortero (volcando)', 'Terminación mortero (enrasado)', 'Terminación mortero (fratas)', 'Fajeado revoque grueso-carpeta', 'Carga y tendido mortero (volcando)', 'Terminación mortero (enrasado)', 'Terminación carpeta (fratas)', 'Oficial albañil', 'Ayudante albañil', 'Oficial albañil', 'Ayudante albañil', 'Oficial albañil', 'Oficial albañil', 'Oficial albañil', 'Oficial albañil', 'Ayudante albañil', 'Oficial albañil', 'Ayudante albañil', 'Adhesivo Klaukol impermeable potenciado 30kg', 'Agua', 'Pastina Klaukol 1kg', 'Oficial revestimiento', 'Ayudante revestimiento', 'Oficial solado', 'Ayudante solado', 'Hoja puerta placa', 'Kit herraje', 'Marco chapa a medida', 'Colocación marco de madera', 'Colocación hoja de madera', 'Hormigón pobre (H.H.R.P.1:1:5:10)', 'Contrapiso sobre terreno con pendiente (mano de obra)', 'Mortero (M.C.1:3 arena mediana)', 'Carpeta fratasada (mano de obra)', 'Mortero (M.C.I.1:3 arena mediana)', 'Carpeta fratasada (mano de obra)', 'Placa de yeso - Estándar 12.5mm 1.20m x 2.40m', 'Pared - Estructura 70mm', 'Pared - Emplacado (mano de obra)', 'Pared - Tomado de juntas', 'Placa de yeso - Estándar 12.5mm 1.20m x 2.40m', 'Pared - Estructura 70mm', 'Pared - Emplacado (mano de obra)', 'Pared - Tomado de juntas', 'Placa de yeso - Estándar 12.5mm 1.20m x 2.40m', 'Pared - Estructura 70mm', 'Pared - Emplacado (mano de obra)', 'Pared - Tomado de juntas', 'Placa de yeso - Estándar 12.5mm 1.20m x 2.40m', 'Placa de yeso - Resistente a la humedad 12.5mm 1.20m x 2.40m', 'Pared - Estructura 70mm', 'Pared - Emplacado (mano de obra)', 'Pared - Tomado de juntas', 'Placa de yeso - Estándar 12.5mm 1.20m x 2.40m', 'Pared - Estructura 70mm', 'Pared - Emplacado (mano de obra)', 'Pared - Tomado de juntas', 'Placa de yeso - Estándar 12.5mm 1.20m x 2.40m', 'Pared - Estructura 70mm', 'Pared - Emplacado (mano de obra)', 'Pared - Tomado de juntas', 'Placa de yeso - Estándar 12.5mm 1.20m x 2.40m', 'Pared - Estructura 35mm', 'Pared - Emplacado (mano de obra)', 'Pared - Tomado de juntas', 'Perfil Durlock cantonera - 32mm x 32mm x 2,60m', 'Perfil Durlock solera - 70mm x 28mm x 2,60m', 'Fenólico 18mm', 'Refuerzos - Emplacado (mano de obra)', 'Perfil Durlock buña Z - 2,60m', 'Tornillos T2 - Punta aguja x 100u', 'Perfil Durlock solera - 70mm x 28mm x 2,60m', 'Perfil Durlock montante - 69mm x 35mm x 2,60m', 'Tornillos T1 - Punta aguja x 100u', 'Tarugos de nylon N°8 con tope x 100u', 'Tornillo de acero de 6mm x 100u', 'Perfil Durlock solera - 35mm x 28mm x 2,60m', 'Perfil Durlock montante - 34mm x 35mm x 2,60m', 'Tornillos T1 - Punta aguja x 100u', 'Tarugos de nylon N°8 con tope x 100u', 'Tornillo autoperforante 12x2mm 100u', 'Tornillos T2 - Punta aguja x 100u', 'Cinta de papel microperforada 150m', 'Masilla 32kg', 'Ayudante demolición', 'Estructura de acero liviana en taller', 'Estructura de acero liviana montaje en obra', 'Pintura para estructura metálica', 'Tubo estructural', 'Oficial herrero', 'Oficial herrero', 'Pintura base epoxi + esmalte poliuretánico (s/metálica)', 'Insumo acero no estructural', 'Oficial herrero', 'Cemento portland 50kg', 'Cal en polvo 25kg', 'Bolsón de arena', 'Bolsón de granza', 'Agua', 'Movimiento de material envasado', 'Movimiento de material granel con carretilla y guinche', 'Mortero elaboración*', 'Instalación clocal - Boca sobre TN', 'Instalación clocal - Boca sobre entrepiso', 'Instalación clocal/pluvial - Montante PVC 110', 'Instalación clocal/pluvial - Cámara de inspección premoldeada 60x60', 'Instalación clocal - Colocación de artefacto sanitario', 'Instalación agua fría y caliente - Suministro por artefacto', 'Instalación agua fría y caliente - Colocación de grifería', 'Instalación agua fría y caliente - Colocación de accesorios', 'Instalación agua fría y caliente - Provisión e instalación de tanques', 'Instalación agua fría y caliente - Provisión e instalación de bombas', 'Instalación cloacal/pluvial - Caño Duratop X enterrado', 'Instalación cloacal/pluvial - Caño Duratop X suspendido', 'Instalación cloacal/pluvial - Caño Duratop X suspendido', 'Insumos instalación sanitaria', 'Oficial sanitarista', 'Ayudante sanitarista', 'Insumos instalación sanitaria', 'Oficial sanitarista', 'Ayudante sanitarista', 'Instalación agua fría y caliente - Caño Aqua System', 'Insumos instalación sanitaria', 'Oficial sanitarista', 'Ayudante sanitarista', 'Oficial albañil', 'Tanque Rotoplas multicapa 1100lts', 'Base de apoyo Rotoplas para 1100lts', 'Oficial sanitarista', 'Ayudante sanitarista', 'Bomba presurizadora Rowa Max Press hasta 22mts', 'Oficial sanitarista', 'Ayudante sanitarista', 'Instalación cloacal/pluvial - Caño Duratop X 40mm suspendido', 'Instalación cloacal/pluvial - Caño Duratop X 50mm suspendido', 'Instalación cloacal/pluvial - Caño Duratop X 63mm suspendido', 'Instalación cloacal/pluvial - Caño Duratop X 110mm suspendido', 'Instalación cloacal/pluvial - Caño Duratop X 40mm enterrada', 'Instalación cloacal/pluvial - Caño Duratop X 50mm enterrada', 'Instalación cloacal/pluvial - Caño Duratop X 63mm enterrada', 'Instalación cloacal/pluvial - Caño Duratop X 110mm enterrada', 'Instalación agua fría y caliente - Caño Aqua System 25mm', 'Instalación agua fría y caliente - Caño Aqua System 32mm', 'Instalación agua fría y caliente - Caño Aqua System 50mm', 'Instalación agua fría y caliente - Caño Aqua System 63mm', 'Instalación agua fría y caliente - Caño Aqua System 90mm', 'Llave de paso Acqua System 25mm', 'Caño Duratop X 40mm', 'Codo Duratop X 40mm', 'Instalación cloacal/pluvial - Tendido de cañería suspendida', 'Caño Duratop X 50mm', 'Codo Duratop X 50mm', 'Instalación cloacal/pluvial - Tendido de cañería suspendida', 'Caño Duratop X 63mm', 'Codo Duratop X 63mm', 'Instalación cloacal/pluvial - Tendido de cañería suspendida', 'Caño Duratop X 110mm', 'Codo Duratop X 110mm', 'Instalación cloacal/pluvial - Tendido de cañería suspendida', 'Caño Duratop X 40mm', 'Codo Duratop X 40mm', 'Instalación cloacal/pluvial - Tendido de cañería enterrada', 'Caño Duratop X 50mm', 'Codo Duratop X 50mm', 'Instalación cloacal/pluvial - Tendido de cañería enterrada', 'Caño Duratop X 63mm', 'Codo Duratop X 63mm', 'Instalación cloacal/pluvial - Tendido de cañería enterrada', 'Caño Duratop X 110mm', 'Codo Duratop X 110mm', 'Instalación cloacal/pluvial - Tendido de cañería enterrada', 'Oficial sanitarista', 'Ayudante sanitarista', 'Caño Acqua System 25mm', 'Codo Acqua System 25mm', 'Instalación agua fría y caliente - Tendido de cañería', 'Caño Acqua System 32mm', 'Codo Acqua System 32mm', 'Instalación agua fría y caliente - Tendido de cañería', 'Caño Acqua System 50mm', 'Codo Acqua System 50mm', 'Instalación agua fría y caliente - Tendido de cañería', 'Caño Acqua System 63mm', 'Codo Acqua System 63mm', 'Instalación agua fría y caliente - Tendido de cañería', 'Caño Acqua System 90mm', 'Codo Acqua System 90mm', 'Instalación agua fría y caliente - Tendido de cañería', 'Oficial sanitarista', 'Ayudante sanitarista', 'Oficial sanitarista', 'Ayudante sanitarista', 'Peón movimiento materiales', 'Mano de obra Subcontratada 3° Nivel (1,3 Ay + C.S.)', 'Obrero UOCRA ayudante movimientos', 'Guinche a engranajes (8Hp=6Kw)', 'Obrero UOCRA ayudante movimientos', 'Guinche a engranajes (8Hp=6Kw)', 'Cemento portland 50kg', 'Bolsón de arena', 'Agua', 'Mortero elaboración*', 'Movimiento de material envasado', 'Movimiento de material granel con carretilla y guinche', 'Cemento portland 50kg', 'Bolsón de arena', 'Agua', 'Hidrófugo en pasta Ceresita 20kg', 'Mortero elaboración*', 'Movimiento de material envasado', 'Movimiento de material granel con carretilla y guinche', 'Cemento portland 50kg', 'Bolsón de arena', 'Agua', 'Hidrófugo en pasta Ceresita 20kg', 'Mortero elaboración*', 'Movimiento de material envasado', 'Movimiento de material granel con carretilla y guinche', 'Cemento portland 50kg', 'Cal en polvo 25kg', 'Bolsón de arena', 'Agua', 'Mortero elaboración*', 'Movimiento de material envasado', 'Movimiento de material granel con carretilla y guinche', 'Mortero elaboración mecánica', 'Mezcladora (2hp=1,49kw)', 'Oficial mortero', 'Ayudante mortero', 'Granito negro brasil extra 2cm (trabajado)', 'Colocación mesada', 'Corte y pegado bacha', 'Terminación pulido lineal o corte 45', 'Oficial albañil', 'Ayudante albañil', 'Ménsula 350 x 150 en ángulo de 1”X1/8 pintada antióxido+sintético', 'Látex interior - Sherwin Williams Loxon satinado 20lts', 'Fijador al aguarrás 20lts', 'Ayudante pintor', 'Oficial pintor', 'Látex cielorraso - Sherwin Williams cielorrasos z10 20lts', 'Fijador al aguarrás 20lts', 'Ayudante pintor', 'Oficial pintor', 'Ayudante pintor', 'Oficial pintor', 'Enduído plástico interior 20lts', 'Esmalte sintético con convertidor blanco brillante 20lts Albalux', 'Oficial pintor', 'Base epoxi marca Revesta (lata 4 lts)', 'Esmalte poliuretánico marca Revesta (lata 4 lts)', 'Diluyente universal 20 lts marca Revesta', 'Oficial pintor', 'Esmalte sintético con convertidor blanco brillante 20lts Albalux', 'Fijador al aguarrás 20lts', 'Oficial pintor', 'Barniz - Alba Cristalba mate 4lts', 'Fijador al aguarrás 20lts', 'Oficial pintor', 'Sikaguard 700 S Impermeabilizante hidrorepelente 20lt', 'Fijador al aguarrás 20lts', 'Ayudante pintor', 'Oficial pintor', 'Mortero (M.H.R.1:1/4:4 arena gruesa)', 'Revoque grueso fratasado (mano de obra)', 'Mortero (M.C.I.1:2 arena mediana)', 'Azotado (mano de obra)', 'Revestimiento cerámico COK.GUARDA 6,9X28,5 VENETO NEGRO BRILLO', 'Oficial revestimiento', 'Colocación zócalo de madera', 'Zócalo de madera MDF prepintado 7 cm']
+
+            unidad = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'hs', 'kg', 'bolsa', 'balde', 'rollo', 'm2', 'bolsa', 'balde', 'm2', 'balde', 'm2', 'm2', 'm2', 'Gl', 'Gl', 'día', 'm2', 'mes', 'u', 'mes', 'mes', 'u', 'gl', 'mes', 'u', 'm2', 'Un', 'u', 'u', 'm2', 'm2', 'm2', 'ml', 'ml', 'm2', 'm2', 'm2', 'm2', 'm2', 'Un', 'ml', 'ml', 'Gl', 'm2', 'm2', 'm2', 'm2', 'm2', 'm2', 'm2', 'm2', 'm2', 'm2', 'm2', 'm2', 'm2', 'm2', 'm', 'm', 'Un', 'Un', 'Gl', 'gl', 'Un', 'Un', 'Un', 'Un', 'u', 'u', 'hs', 'Un', 'Un', 'm2', 'm2', 'Gl', 'Gl', 'u', 'u', 'u', 'u', 'Un', 'Un', 'm2', 'm2', 'm2', 'm2', 'gl', 'm2', 'Gl', 'Un', 'Un', 'm3', 'm3', 'm3', 'm3', 'm3', 'gl', 'gl', 'm3', 'm3', 'Un', 'Un', 'Un', 'Un', 'Un', 'Un', 'Gl', 'Gl', 'Un', 'Un', 'Un', 'gl', 'u', 'gl', 'kg', 'm2', 'm2', 'gl', 'm2', 'm2', 'gl', 'm2', 'm2', 'gl', 'Un', 'gl', 'Un', 'Un', 'Un', 'Un', 'Un', 'Un', 'Un', 'Un', 'Un', 'Un', 'Un', 'Un', 'Un', 'Gl', 'u', 'u', 'u', 'u', 'u', 'u', 'u', 'u', 'u', 'u', 'u', 'u', 'u', 'gl', 'Un', 'Un', 'Un', 'Un', 'Un', 'Un', 'Un', 'Gl', 'Gl', 'Gl', 'Gl', 'mes', 'mes', 'mes', 'm2', 'm2', 'm2', 'm2', 'm2', 'mes', 'Gl', 'm2', 'm2', 'm2', 'm2', 'm2', 'm2', 'm2', 'hs', 'Gl', 'm2', 'sem', 'm2', 'Gl', 'Gl', 'Gl', 'mes', 'mes', 'Gl', 'Gl', 'Gl', 'm2', 'm2', 'm2', 'm2', 'm2', 'ml', 'm2', 'm2', 'm2', 'ml', 'ml', 'ml', 'ml', 'Un', 'm2', 'm2', 'gl', 'm2', 'gl', 'm2', 'gl', 'm2', 'gl', 'm2', 'gl', 'm2', 'm', 'm', 'gl', 'm2', 'gl', 'm2', 'gl', 'm2', 'gl', 'm', 'gl', 'm', 'gl', 'm', 'gl', 'm2', 'gl', 'm2', 'gl', 'm2', 'm2', 'Un', 'u', 'u', 'u', 'm', 'm2', 'Gl', 'm2', 'Gl', 'm2', 'Gl', 'm2', 'Gl', 'm2', 'Gl', 'Gl', 'Gl', 'm2', 'm2', 'm2', 'm2', 'm2', 'm2', 'm2', 'm2', 'm2', 'm2', 'ml', 'm', 'm2', 'm2', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', '$', 'hs', 'hs', '$', 'hs', '$', '$', '$', '$', '$', '$', '$', '$', '$', '$', '$', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', '$', 'hs', 'hs', '$', 'hs', '$', '$', '$', '$', '$', '$', '$', '$', '$', '$', '$', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'm2', 'm2', 'hs', 'm3', 'hs', 'm2', 'm3', 'm2', 'm2', 'm2', 'm3', 'm2', 'm2', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'bolsa', 'm3', 'bolsa', 'hs', 'hs', 'hs', 'hs', 'm2', 'u', 'm', 'm', 'm2', 'm3', 'm2', 'm3', 'm2', 'm3', 'm2', 'u', 'm2', 'm2', 'm2', 'u', 'm2', 'm2', 'm2', 'u', 'm2', 'm2', 'm2', 'u', 'u', 'm2', 'm2', 'm2', 'u', 'm2', 'm2', 'm2', 'u', 'm2', 'm2', 'm2', 'u', 'm2', 'm2', 'm2', 'u', 'u', 'm2', 'm2', 'u', 'caja', 'u', 'u', 'caja', 'caja', 'caja', 'u', 'u', 'caja', 'caja', 'caja', 'caja', 'rollo', 'balde', 'hs', 'kg', 'kg', 'kg', 'kg', 'hs', 'hs', 'm2', 'kg', 'hs', 'bolsa', 'bolsa', 'bolson', 'm3', 'm3', 't', 't', 'm3', 'u', 'u', 'm', 'u', 'u', 'u', 'u', 'u', 'u', 'u', 'm', 'm', 'm', 'u', 'hs', 'hs', 'u', 'hs', 'hs', 'm', 'u', 'hs', 'hs', 'hs', 'u', 'u', 'hs', 'hs', 'u', 'hs', 'hs', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'u', 'm', 'u', 'm', 'm', 'u', 'm', 'm', 'u', 'm', 'm', 'u', 'm', 'm', 'u', 'm', 'm', 'u', 'm', 'm', 'u', 'm', 'm', 'u', 'm', 'hs', 'hs', 'm', 'u', 'm', 'm', 'u', 'm', 'm', 'u', 'm', 'm', 'u', 'm', 'm', 'u', 'm', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'hs', 'bolsa', 'bolson', 'm3', 'm3', 't', 't', 'bolsa', 'bolson', 'm3', 'u', 'm3', 't', 't', 'bolsa', 'bolson', 'm3', 'u', 'm3', 't', 't', 'bolsa', 'bolsa', 'bolson', 'm3', 'm3', 't', 't', 'm3', 'hs', 'hs', 'hs', 'm2', 'm2', 'u', 'm', 'hs', 'hs', 'u', 'Balde', 'Balde', 'hs', 'hs', 'Balde', 'Balde', 'hs', 'hs', 'hs', 'hs', 'balde', 'Balde', 'hs', 'lts', 'lts', 'lata', 'hs', 'Balde', 'Balde', 'hs', 'Lata', 'Balde', 'hs', 'Balde', 'Balde', 'hs', 'hs', 'm3', 'm2', 'm3', 'm2', 'm2', 'hs', 'm', 'm']
+
+            CanPres = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 100, 2.14, 103, 18, 23, 1, 103, 18, 1, 18, 1, 850, 490, 1, 1, 3, 1, 6, 2, 6, 6, 1, 1, 6, 1, 24, 10, 333, 83, 1, 276, 38, 223, 42, 276, 246, 263, 14, 108, 2, 186, 84, 1, 1, 1, 429, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.164, 4.896, 1, 1, 2, 1, 1, 1, 2, 2, 2, 22, 1.53, 1, 455, 1, 1, 1.8, 1.6, 1, 1, 1, 1, 1, 1, 1, 1, 775, 775, 18, 285, 1, 240, 1, 6, 25, 15, 0.02, 0.15, 0.08, 0.03, 333, 0.02, 5, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 91, 0.25, 0.3, 1, 16.5, 16.5, 1, 5, 5, 1, 1, 1, 13, 2, 2, 20, 15, 3, 1, 3, 1, 1, 7, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 10, 2, 8, 3, 13, 4, 2, 1, 1, 1,   , 3, 3, 6, 833, 17, 57, 50, 10.5, 4, 1, 1, 1, 1, 0.7, 0.7, 1, 1, 220, 1, 850, 24, 1, 1, 1, 1, 6, 6, 1, 1, 1, 40, 337, 4, 19, 5, 38, 19, 51, 19, 52, 146, 49, 106, 5, 523, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.4, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.1, 1, 0.4, 1, 1, 1, 35, 1, 2, 1, 1.095, 690, 1, 227, 1, 27, 1, 45, 1, 8, 1, 1, 1, 1, 690, 1, 227, 1, 27, 1, 45, 1, 8, 348, 1, 12, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 94, 138, 163, 139, 117, 49, 22, 0.08, 62, 36, 0.1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 94, 138, 163, 139, 117, 49, 22, 0.08, 62, 36, 0.1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.1, 1, 0.24, 0.01, 1.66, 1, 0.1, 1, 1, 1, 0.02, 1, 1, 0.55, 0.55, 20, 20, 0.2, 0.2, 0.35, 87, 87, 142, 142, 0.17, 0.11, 0.5, 1.375, 1.375, 0.5, 0.5, 1.6, 1, 4.8, 4.8, 1.6, 0.4, 1.1, 0.02, 1, 0.02, 1, 0.73, 1, 2, 2, 1.458, 1, 4, 2, 1.1, 1, 3, 2, 0.73, 0.73, 1, 4, 2, 364, 1, 1, 1, 0.73, 1, 2, 1, 364, 1, 1, 1, 384, 0.4, 1, 1, 384, 0.3, 0.4, 1.16, 0.1, 35, 35, 0.4, 1.16, 0.1, 35, 35, 0.15, 11, 0.03, 8.47, 1, 1, 1, 1.1, 87, 148, 0.04, 1.1, 0.25, 2.38, 2.4, 439, 909, 0.11, 0.15, 1.7, 1, 0.05, 0.95, 2, 0.01, 1, 1, 1, 0.3, 0.01, 0.01, 5, 5, 1, 6714.53, 18.679, 18.679, 88.718, 1.651, 1.651, 6, 89.615, 1.67, 1.67, 1.92, 1, 1, 11.934, 11.934, 1, 9.087, 9.087, 398, 143, 73, 386, 398, 143, 73, 386, 875, 0.03, 56, 34, 5, 82, 1.3, 1.37, 1, 1.3, 0.89, 1, 1.3, 0.62, 1, 1.3, 0.26, 1, 1.3, 1.37, 1, 1.3, 0.89, 1, 1.3, 0.62, 1, 1.3, 0.26, 1, 0.78, 0.78, 1.3, 0.67, 1, 1.3, 0.08, 1, 1.3, 0.25, 1, 1.3, 0.02, 1, 1.3, 0.31, 1, 0.95, 0.95, 1.9, 1.9, 8, 0.3, 2.746, 728, 3.186, 1.164, 7.82, 0.9, 312, 1, 422, 1.488, 10.36, 796, 337, 1.685, 1, 552, 1.316, 7.82, 0.9, 312, 1.56, 1, 205, 1.71, 1.62, 6.56, 1, 261, 1, 205, 1.71, 1, 0.5, 0.5, 1, 1, 1, 532, 1.75, 3.08, 3.08, 1, 18, 4, 297, 297, 13, 4, 297, 297, 0.27, 0.27, 0.05, 0.01, 1.2, 0.1, 0.2, 1, 1.2, 13, 0.01, 1.2, 5, 1, 0.2, 35, 0.01, 0.3, 0.3, 0.02, 1, 5, 1, 1.15, 465, 1, 1]
+
+            PresMat = [5358770.43, 4107425.25, 2757136.59, 20233303.06, 1272712.35, 33555525.67, 1507873.56, 877326.36, 651130.56, 6062313.26, 0, 2134787, 1208004.26, 91222.96, 0, 0, 0, 0, 0, 294992.88, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2600.9, 9772.57, 192138.42, 56939.7, 0, 9772.57, 192138.42, 0, 192138.42, 0, 0, 269.69, 5157315.4, 69306.93, 0, 269.69, 341585.96, 336487.66, 67046.92, 33523.47, 804563.07, 839777.99, 31176.82, 69306.93, 27130.44, 0, 51754.46, 119231.29, 0, 1870.98, 8783.58, 802.65, 1870.98, 5919.89, 5919.89, 5919.89, 1367.38, 1367.38, 17147.86, 393.87, 393.87, 0, 1870.98, 8783.58, 1870.98, 1870.98, 4552.51, 1367.38, 4552.51, 1367.38, 4552.51, 1367.38, 1367.38, 1367.38, 1617.92, 3117.77, 393.87, 393.87, 0, 0, 0, 0, 0, 0, 1031497.97, 3263.23, 674181.68, 3263.23, 0, 639531.67, 568472.59, 355295.37, 355295.37, 83868.51, 7354.45, 42350.33, 41518.18, 3658.73, 3695.72, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 164297.01, 0, 0, 0, 0, 0, 0, 0, 9271.59, 39313.02, 0, 0, 0, 0, 0, 0, 0, 0, 294992.88, 0, 0, 294992.88, 0, 0, 3241.68, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1646.54, 2413.9, 21699.18, 1413.08, 3526.21, 0, 0, 1646.54, 2413.9, 21699.18, 711.62, 1307.07, 3526.21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15584.82, 23482.05, 28635.12, 10807.39, 10264.36, 10389.5, 19595.51, 23482.05, 10807.39, 1542.85, 696.56, 1542.85, 922.94, 3691.74, 16790.44, 15584.82, 0, 23482.05, 0, 28635.12, 0, 10807.39, 0, 10264.36, 0, 14776.7, 696.56, 1542.85, 0, 19595.51, 0, 23482.05, 0, 10807.39, 0, 1542.85, 0, 696.56, 0, 1542.85, 0, 9229.35, 0, 9229.35, 0, 16790.44, 0, 36363.21, 21995.64, 4136.44, 0, 5565.93, 29280.79, 3984522.3, 22707.99, 1013568.62, 59679.53, 93379.23, 22508.4, 200927.7, 29280.79, 46197.36, 0, 0, 29280.79, 5774.67, 22707.99, 4465.06, 59679.53, 3458.49, 22508.4, 4465.06, 29280.79, 5774.67, 4332.97, 4332.97, 73110.53, 73110.53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 245.17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9979.93, 0, 3659.24, 0, 0, 0, 0, 277836.05, 49016.06, 37630.82, 0, 0, 54247.94, 0, 82327.21, 0, 120694.86, 0, 10345.48, 6050.66, 182.86, 808.12, 10345.48, 6050.66, 182.86, 808.12, 10345.48, 6050.66, 182.86, 808.12, 10345.48, 17376.14, 6050.66, 182.86, 808.12, 10345.48, 6050.66, 182.86, 808.12, 10345.48, 6050.66, 182.86, 808.12, 10345.48, 5507.63, 182.86, 808.12, 1813.96, 3247.57, 7564.61, 365.71, 4017.85, 1219.04, 3247.57, 3657.18, 2171.56, 6501.47, 1845.53, 2389.36, 2740.45, 2171.56, 6501.47, 26521.69, 1219.04, 7012.03, 24366.34, 0, 2329.5, 0, 271.4, 2117.73, 0, 0, 6784.97, 2946.98, 0, 8150.98, 4801.43, 20651.72, 15686.55, 0, 0, 0, 0, 25658.95, 25658.95, 5131.79, 276907.22, 3658.73, 26318.94, 3695.72, 0, 246204.79, 904147.03, 5131.79, 5131.79, 5131.79, 41.24, 0, 0, 41.24, 0, 0, 4386.49, 41.24, 0, 0, 0, 197277.75, 48927.04, 0, 0, 904147.03, 0, 0, 3108.47, 3624.91, 4382.97, 7917.87, 3108.47, 3624.91, 4382.97, 7917.87, 2765.72, 3891.79, 8385.34, 11765.27, 37633.64, 9658.03, 1734.24, 623.33, 0, 2194.85, 866.97, 0, 2865.27, 1061.49, 0, 5663.85, 2134.09, 0, 1734.24, 623.33, 0, 2194.85, 866.97, 0, 2865.27, 1061.49, 0, 5663.85, 2134.09, 0, 0, 0, 1897.62, 445.98, 0, 2951.91, 678.91, 0, 5970.18, 2496.45, 0, 8981.8, 4446.68, 0, 24109.91, 20292.78, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8150.98, 20651.72, 0, 0, 0, 0, 8150.98, 20651.72, 0, 24594.65, 0, 0, 0, 8150.98, 20651.72, 0, 24594.65, 0, 0, 0, 8150.98, 4801.43, 20651.72, 0, 0, 0, 0, 0, 0, 0, 0, 342412.26, 12883.11, 0, 0, 0, 0, 12883.11, 230373.57, 101447.1, 0, 0, 112707.26, 101447.1, 0, 0, 0, 0, 27347.54, 161792.15, 0, 14407.29, 26686.95, 6848.46, 0, 161792.15, 101447.1, 0, 58483.14, 101447.1, 0, 221974.59, 101447.1, 0, 0, 65353.69, 0, 142324.91, 0, 63574.37, 0, 0, 4332.97]
+
+            PresMdO = [1019038.3, 4783404.08, 19076768.55, 25565398.87, 809129.65, 15700988.57, 3262820.16, 0, 220296.96, 15567434.81, 0, 86739.84, 196369.04, 451835.12, 0, 0, 0, 0, 0, 454369.37, 0, 0, 0, 0, 0, 0, 0, 4466062.02, 0, 0, 0, 8665.31, 5316.63, 0, 0, 0, 18792.02, 0, 0, 8790.77, 0, 7150.71, 0, 2079.67, 0, 0, 0, 2079.67, 0, 0, 0, 0, 0, 0, 0, 0, 9179.04, 0, 0, 0, 9179.04, 7119.53, 7191.44, 3054.28, 7119.53, 13591.83, 13591.83, 13591.83, 6472.3, 6472.3, 94404.98, 2596.4, 2596.4, 0, 7119.53, 7191.44, 7119.53, 7119.53, 7119.53, 6472.3, 7119.53, 6472.3, 7119.53, 6472.3, 6472.3, 6472.3, 15578.38, 15578.38, 2596.4, 2596.4, 0, 0, 0, 0, 0, 0, 0, 3942.72, 0, 0, 8665.31, 103960.08, 92408.96, 57755.6, 57755.6, 372225.83, 79609.29, 209158.13, 163067.7, 39576.91, 40032.38, 0, 0, 1100.93, 1467.9, 11009.28, 5871.61, 0, 2201.86, 288554.82, 17330.62, 0, 73395.18, 73395.18, 73395.18, 73395.18, 73395.18, 866531, 866531, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 454369.37, 0, 0, 454369.37, 0, 0, 4993.07, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8594.03, 8579.86, 31691.05, 15391.77, 30473.98, 2219032.2, 0, 8594.03, 8579.86, 31691.05, 4050.03, 17938.21, 25783.75, 4690.23, 10086.51, 1663739.52, 3296.85, 69322.48, 3296.85, 0, 0, 0, 0, 0, 0, 0, 0, 29702.97, 43069.31, 43069.31, 19801.98, 19801.98, 48014.59, 36386.14, 43069.31, 19801.98, 8415.84, 8415.84, 8415.84, 4455.45, 4455.45, 2970.3, 0, 29702.97, 0, 43069.31, 0, 43069.31, 0, 19801.98, 0, 19801.98, 0, 0, 0, 48014.59, 0, 36386.14, 0, 43069.31, 0, 19801.98, 0, 8415.84, 0, 8415.84, 0, 8415.84, 0, 4455.45, 0, 4455.45, 0, 2970.3, 23117.99, 0, 0, 10659.53, 11377.59, 0, 12966493.8, 0, 1995504.79, 0, 193069.17, 0, 395584.65, 0, 150336.16, 0, 0, 0, 18792.02, 0, 8790.77, 0, 7150.71, 0, 8790.77, 0, 18792.02, 9375.92, 9375.92, 0, 0, 469.35, 689.04, 813.87, 694.04, 584.19, 244.66, 109.85, 399.45, 0.5, 309.57, 179.75, 99.86, 499.31, 4993.07, 4993.07, 4993.07, 4993.07, 4993.07, 4993.07, 4993.07, 4993.07, 4993.07, 4993.07, 4993.07, 397.31, 583.29, 688.96, 587.52, 494.53, 207.11, 92.99, 338.14, 0.5, 262.06, 152.16, 211.34, 422.67, 4226.73, 4226.73, 4226.73, 4226.73, 4226.73, 4226.73, 4226.73, 4226.73, 4226.73, 4226.73, 4226.73, 4993.07, 5093.44, 4993.07, 4438.58, 12981.98, 12981.98, 19972.28, 4993.07, 5093.44, 4993.07, 5093.44, 4226.73, 4438.58, 4226.73, 4438.58, 10989.5, 10989.5, 4226.73, 4438.58, 4226.73, 4438.58, 4226.73, 4438.58, 4226.73, 4438.58, 4226.73, 4438.58, 0, 2079.67, 8665.31, 375036.4, 10086.51, 2662.75, 10313.5, 2017.3, 2017.3, 1631.41, 10313.5, 2017.3, 3530.28, 10086.51, 8665.31, 10086.51, 8665.31, 10086.51, 10086.51, 10086.51, 10086.51, 8665.31, 10086.51, 8665.31, 0, 0, 0, 10086.51, 8665.31, 10086.51, 8665.31, 0, 0, 0, 0, 0, 57973.69, 7728.7, 60438.45, 7385.26, 59730.06, 7385.26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8665.31, 1737.59, 2955.9, 623.14, 0, 19972.28, 19972.28, 15578.38, 0, 19972.28, 0, 0, 0, 0, 0, 27607.68, 23794.94, 13381.14, 227729, 113864.55, 22772.91, 447763.27, 39576.91, 112186.44, 40032.38, 19366.1, 286075.64, 217828.84, 45545.8, 22772.91, 22772.91, 0, 12981.98, 10989.5, 0, 12981.98, 10989.5, 18697.74, 0, 12981.98, 10989.5, 10086.51, 0, 0, 12981.98, 10989.5, 0, 12981.98, 10989.5, 22772.91, 22772.91, 22772.91, 22772.91, 45545.81, 45545.81, 45545.81, 45545.81, 18697.75, 18697.75, 18697.75, 18697.75, 18697.75, 0, 0, 0, 22772.91, 0, 0, 22772.91, 0, 0, 22772.91, 0, 0, 22772.91, 0, 0, 45545.81, 0, 0, 45545.81, 0, 0, 45545.81, 0, 0, 45545.81, 12981.98, 10989.5, 0, 0, 18697.75, 0, 0, 18697.75, 0, 0, 18697.75, 0, 0, 18697.75, 0, 0, 18697.75, 12981.98, 10989.5, 12981.98, 10989.5, 8665.31, 10989.5, 8665.31, 0, 8665.31, 0, 0, 0, 0, 13381.14, 27607.68, 23794.94, 0, 0, 0, 0, 13381.14, 27607.68, 23794.94, 0, 0, 0, 0, 13381.14, 27607.68, 23794.94, 0, 0, 0, 0, 13381.14, 27607.68, 23794.94, 13381.14, 0, 9431.65, 8665.31, 0, 57755.6, 0, 0, 10086.51, 8665.31, 0, 0, 0, 10989.5, 12981.98, 0, 0, 10989.5, 12981.98, 10989.5, 12981.98, 0, 0, 12981.98, 0, 0, 0, 12981.98, 0, 0, 12981.98, 0, 0, 12981.98, 0, 0, 10989.5, 12981.98, 59730.06, 16743.61, 59934.72, 3750.36, 0, 10086.51, 9375.92, 0]
+
+            Pres = [7433967.73 ,  8950939.87 ,  21833905.07 ,  45798701.93 ,  2081840.95 ,  49256514.24 ,  4770693.72 ,  877326.36 ,  1435783.92 ,  21629748.07 ,  16207491.32 ,  2522072.82 ,  1578345.01 ,  543058.14 ,  134917.18 , 0, 0, 0, 0,  33524899.53 , 0,  40593920.9 , 0,  6377168.43 ,  1346534.65 ,  733152.78 , 0,  4466062.02 , 0,  38123942.94 ,  14851485.15 ,  8665.31 ,  7917.52 ,  9772.57 ,  192138.42 ,  56939.7 ,  18792.02 ,  9772.57 ,  192138.42 ,  8790.77 ,  192138.42 ,  7150.71 ,  1242.54 ,  2349.36 ,  5157315.4 ,  69306.93 ,  414179.41 ,  2349.36 ,  341585.96 ,  336487.66 ,  67046.92 ,  33523.47 ,  804563.07 ,  839777.99 ,  31176.82 ,  69306.93 ,  36309.48 ,  56435.64 ,  51754.46 ,  119231.29 , 9179.04,  8990.51 ,  15975.02 ,  3856.93 ,  8990.51 ,  19511.72 ,  19511.72 ,  19511.72 ,  7839.68 ,  7839.68 ,  111552.84 ,  2990.27 ,  2990.27 , 0,  8990.51 ,  15975.02 ,  8990.51 ,  8990.51 ,  11672.04 ,  7839.68 ,  11672.04 ,  7839.68 ,  11672.04 ,  7839.68 ,  7839.68 ,  7839.68 ,  17196.3 ,  18696.15 ,  2990.27 ,  2990.27 ,  2024047.08 ,  4109374.23 , 0,  3267326.73 ,  1195674.05 ,  1195674.05 ,  1181770.96 ,  7205.95 ,  772399.32 ,  3263.23 ,  8665.31 ,  835594.42 ,  742750.59 ,  464219.12 ,  464219.12 ,  456094.4 ,  86963.74 ,  251508.47 ,  204585.93 ,  43235.64 ,  43728.1 ,  95124.61 ,  39792.57 ,  1100.93 , 1467.9,  11009.28 ,  5871.61 ,  60110.54 ,  2201.86 ,  288554.82 ,  17330.62 ,  164297.01 ,  73395.18 ,  73395.18 ,  73395.18 ,  73395.18 ,  73395.18 , 866531, 866531,  9271.59 ,  39313.02 ,  9806930.69 ,  1267326.73 ,  1702970.3 ,  2277227.72 ,  1782178.22 ,  1930693.07 , 0, 0,  12490245.44 ,  2267327.36 ,  9504950.5 ,  749362.25 ,  33789.9 ,  2100773.09 ,  8234.75 ,  20333.85 ,  5581.72 ,  27031.92 ,  5581.72 ,  7726.46 ,  1881188.12 ,  20333.85 ,  5581.72 ,  563492.08 ,  1574257.43 ,  693069.93 ,  1530089.11 ,  1036069.31 ,  358752.48 ,  179376.24 ,  289158.42 ,  349930.69 ,  289158.42 ,  415603.96 ,  361693.07 ,  660653.47 ,  235247.52 ,  312683.17 ,  387178.22 ,  4033514.85 ,  1530089.11 ,  1036069.31 ,  358752.48 ,  179376.24 ,  289158.42 ,  349930.69 ,  289158.42 ,  415603.96 ,  361693.07 ,  660653.47 ,  235247.52 ,  312683.17 ,  387178.22 ,  4033514.85 ,  195059.41 ,  192118.81 ,  259752.48 ,  115663.37 ,  60772.28 ,  132326.73 ,  148990.1 ,  1346534.65 ,  366576.39 ,  366576.39 ,  10803889.5 ,  122192.13 ,  122192.13 ,  1800648.25 ,  10240.57 ,  10993.76 ,  53390.22 ,  16804.86 ,  34000.19 ,  2219032.2 , 0,  10240.57 ,  10993.76 ,  53390.22 ,  4761.66 ,  19245.29 ,  29309.96 ,  4690.23 ,  10086.51 ,  1663739.52 ,  3296.85 ,  69322.48 ,  3296.85 , 0,  12463596.72 ,  25660346.22 ,  2077266.12 ,  4276724.37 ,  14851485.15 , 0, 0,  45287.79 ,  66551.36 ,  71704.43 ,  30609.37 ,  30066.34 ,  58404.09 ,  55981.65 ,  66551.36 ,  30609.37 ,  9958.69 , 9112.4,  9958.69 ,  5378.39 ,  8147.19 ,  19760.74 ,  15584.82 ,  29702.97 ,  23482.05 ,  43069.31 ,  28635.12 ,  43069.31 ,  10807.39 ,  19801.98 ,  10264.36 ,  19801.98 ,  14776.7 ,  696.56 ,  1542.85 ,  48014.59 ,  19595.51 ,  36386.14 ,  23482.05 ,  43069.31 ,  10807.39 ,  19801.98 ,  1542.85 ,  8415.84 ,  696.56 ,  8415.84 ,  1542.85 ,  8415.84 ,  9229.35 ,  4455.45 ,  9229.35 ,  4455.45 ,  16790.44 , 2970.3,  59481.17 ,  21995.64 ,  4136.44 ,  10659.53 ,  16943.49 ,  29280.79 ,  16951016.1 ,  22707.99 ,  3009073.41 ,  59679.53 ,  286448.4 ,  22508.4 ,  596512.35 ,  29280.79 ,  196533.52 , 0, 0,  29280.79 ,  24566.69 ,  22707.99 ,  13255.83 ,  59679.53 ,  10609.2 ,  22508.4 ,  13255.83 ,  29280.79 ,  24566.69 ,  13708.89 ,  13708.89 ,  73110.53 ,  73110.53 ,  469.35 ,  689.04 ,  813.87 ,  694.04 ,  584.19 ,  244.66 ,  109.85 ,  399.45 ,  0.5 ,  309.57 ,  179.75 ,  99.86 ,  499.31 , 4993.07, 4993.07, 4993.07, 4993.07, 4993.07, 4993.07, 4993.07, 4993.07, 4993.07, 4993.07, 4993.07,  397.31 ,  583.29 ,  688.96 ,  587.52 ,  494.53 ,  207.11 ,  92.99 ,  338.14 ,  0.5 ,  262.06 ,  152.16 ,  211.34 ,  422.67 ,  4226.73 ,  4226.73 ,  4226.73 ,  4226.73 ,  4226.73 ,  4226.73 ,  4226.73 ,  4226.73 ,  4226.73 ,  4226.73 ,  4226.73 , 4993.07,  5093.44 , 4993.07,  4438.58 ,  12981.98 ,  12981.98 ,  19972.28 , 4993.07,  5093.44 , 4993.07,  5093.44 ,  4226.73 ,  4438.58 ,  4226.73 ,  4438.58 ,  10989.5 ,  10989.5 ,  4226.73 ,  4438.58 ,  4226.73 ,  4438.58 ,  4226.73 ,  4438.58 ,  4226.73 ,  4438.58 ,  4226.73 ,  4438.58 ,  245.17 ,  2079.67 ,  8665.31 ,  375036.4 ,  10086.51 ,  2662.75 ,  10313.5 , 2017.3, 2017.3,  1631.41 ,  10313.5 , 2017.3,  3530.28 ,  10086.51 ,  8665.31 ,  10086.51 ,  8665.31 ,  10086.51 ,  10086.51 ,  10086.51 ,  10086.51 ,  8665.31 ,  10086.51 ,  8665.31 ,  9979.93 , 0,  3659.24 ,  10086.51 ,  8665.31 ,  10086.51 ,  8665.31 ,  277836.05 ,  49016.06 ,  37630.82 ,  14111.73 ,  19050.84 ,  112221.63 , 7728.7,  142765.66 ,  7385.26 ,  180424.92 ,  7385.26 ,  10345.48 ,  6050.66 ,  182.86 ,  808.12 ,  10345.48 ,  6050.66 ,  182.86 ,  808.12 ,  10345.48 ,  6050.66 ,  182.86 ,  808.12 ,  10345.48 ,  17376.14 ,  6050.66 ,  182.86 ,  808.12 ,  10345.48 ,  6050.66 ,  182.86 ,  808.12 ,  10345.48 ,  6050.66 ,  182.86 ,  808.12 ,  10345.48 ,  5507.63 ,  182.86 ,  808.12 ,  1813.96 ,  3247.57 ,  7564.61 ,  365.71 ,  4017.85 , 1219.04,  3247.57 ,  3657.18 ,  2171.56 ,  6501.47 ,  1845.53 ,  2389.36 ,  2740.45 ,  2171.56 ,  6501.47 ,  26521.69 , 1219.04, 7012.03,  24366.34 ,  8665.31 , 4067.09, 2955.9,  894.53 ,  2117.73 ,  19972.28 ,  19972.28 ,  22363.35 ,  2946.98 ,  19972.28 ,  8150.98 ,  4801.43 ,  20651.72 ,  15686.55 , 0,  27607.68 ,  23794.94 ,  13381.14 ,  253387.95 ,  139523.5 ,  27904.7 ,  724670.49 ,  43235.64 ,  138505.44 ,  43728.1 ,  19366.1 ,  532280.43 ,  1121975.87 ,  50677.59 ,  27904.7 ,  27904.7 ,  41.24 ,  12981.98 ,  10989.5 ,  41.24 ,  12981.98 ,  10989.5 ,  23084.24 ,  41.24 ,  12981.98 ,  10989.5 ,  10086.51 ,  197277.75 ,  48927.04 ,  12981.98 ,  10989.5 ,  904147.03 ,  12981.98 ,  10989.5 ,  25881.38 ,  26397.82 ,  27155.88 ,  30690.78 ,  48654.28 ,  49170.72 ,  49928.78 ,  53463.68 ,  21463.47 ,  22589.54 ,  27083.09 ,  30463.02 ,  56331.39 , 9658.03,  1734.24 ,  623.33 ,  22772.91 ,  2194.85 ,  866.97 ,  22772.91 ,  2865.27 ,  1061.49 ,  22772.91 ,  5663.85 , 2134.09,  22772.91 ,  1734.24 ,  623.33 ,  45545.81 ,  2194.85 ,  866.97 ,  45545.81 ,  2865.27 ,  1061.49 ,  45545.81 ,  5663.85 , 2134.09,  45545.81 ,  12981.98 ,  10989.5 ,  1897.62 ,  445.98 ,  18697.75 ,  2951.91 ,  678.91 ,  18697.75 ,  5970.18 ,  2496.45 ,  18697.75 , 8981.8,  4446.68 ,  18697.75 ,  24109.91 ,  20292.78 ,  18697.75 ,  12981.98 ,  10989.5 ,  12981.98 ,  10989.5 ,  8665.31 ,  10989.5 ,  8665.31 , 0,  8665.31 , 0,  8150.98 ,  20651.72 , 0,  13381.14 ,  27607.68 ,  23794.94 ,  8150.98 ,  20651.72 , 0,  24594.65 ,  13381.14 ,  27607.68 ,  23794.94 ,  8150.98 ,  20651.72 , 0,  24594.65 ,  13381.14 ,  27607.68 ,  23794.94 ,  8150.98 ,  4801.43 ,  20651.72 , 0,  13381.14 ,  27607.68 ,  23794.94 ,  13381.14 , 0,  9431.65 ,  8665.31 ,  342412.26 ,  70638.71 ,  22422.5 ,  22422.5 ,  10086.51 ,  8665.31 ,  12883.11 ,  230373.57 ,  101447.1 ,  10989.5 ,  12981.98 ,  112707.26 ,  101447.1 ,  10989.5 ,  12981.98 ,  10989.5 ,  12981.98 ,  27347.54 ,  161792.15 ,  12981.98 ,  14407.29 ,  26686.95 ,  6848.46 ,  12981.98 ,  161792.15 ,  101447.1 ,  12981.98 ,  58483.14 ,  101447.1 ,  12981.98 ,  221974.59 ,  101447.1 ,  10989.5 ,  12981.98 ,  125083.75 ,  16743.61 ,  202259.63 ,  3750.36 ,  63574.37 ,  10086.51 ,  9375.92 ,  4332.97]
+
+            TotPres = [7433967.73, 8950939.87, 21833905.07, 45798701.93, 2081840.95, 49256514.24, 4770693.72, 877326.36, 1435783.92, 21629748.07, 16207491.32, 2522072.82, 1578345.01, 543058.14, 134917.18, 0.00, 0.00, 0.00, 0.00, 33524899.53, 0.00, 40593920.90, 0.00, 6377168.43, 1346534.65, 733152.78, 0.00, 4466062.02, 0.00, 38123942.94, 14851485.15, 866531.00, 16943.49, 1006.57, 3458.49, 1309.61, 18792.02, 1006.57, 3458.49, 8790.77, 3458.49, 7150.71, 1056159.00, 1151186.40, 5157315.40, 69306.93, 1242.54, 2349.36, 2049515.76, 672975.32, 402281.52, 201140.82, 804563.07, 839777.99, 187060.92, 69306.93, 871427.52, 564356.40, 17234.24, 9896.20, 9179.04, 2481380.76, 607050.76, 860095.39, 377601.42, 5385234.72, 4799883.12, 5131582.36, 109755.52, 846685.44, 223105.68, 556190.22, 251182.68, 0.00, 8990.51, 15975.02, 3856.93, 8990.51, 11672.04, 7839.68, 11672.04, 7839.68, 11672.04, 7839.68, 7839.68, 7839.68, 20016.49, 91536.35, 2990.27, 2990.27, 4048094.16, 4109374.23, 0.00, 3267326.73, 2391348.10, 2391348.10, 2363541.92, 158530.90, 1181770.96, 3263.23, 3942.72, 835594.42, 742750.59, 835594.42, 742750.59, 456094.40, 86963.74, 251508.47, 204585.93, 43235.64, 43728.10, 95124.61, 39792.57, 853220.75, 1137622.50, 198167.04, 1673408.85, 60110.54, 528446.40, 288554.82, 103983.72, 4107425.25, 1100.93, 1467.90, 11009.28, 5871.61, 2201.86, 288554.82, 17330.62, 46357.95, 117939.06, 9806930.69, 1267326.73, 1702970.30, 2277227.72, 1782178.22, 1930693.07, 0.00, 0.00, 12490245.44, 2267327.36, 9504950.50, 749362.25, 135159.60, 2100773.09, 749362.25, 5083.46, 1674.52, 27031.92, 92098.38, 127486.59, 1881188.12, 101669.25, 27908.60, 563492.08, 1574257.43, 693069.93, 19891158.43, 2072138.62, 717504.96, 3587524.80, 4337376.30, 1049792.07, 289158.42, 1246811.88, 361693.07, 660653.47, 1646732.64, 312683.17, 387178.22, 4033514.85, 1530089.11, 1036069.31, 358752.48, 179376.24, 289158.42, 349930.69, 289158.42, 415603.96, 361693.07, 660653.47, 235247.52, 312683.17, 387178.22, 4033514.85, 1950594.10, 384237.62, 2078019.84, 346990.11, 790039.64, 529306.92, 297980.20, 1346534.65, 366576.39, 366576.39, 0.00, 366576.39, 366576.39, 10803889.50, 8530394.81, 186893.92, 3043242.54, 840243.00, 357002.00, 8876128.80, 0.00, 10240.57, 10993.76, 53390.22, 3333.16, 13471.70, 29309.96, 4690.23, 2219032.20, 1663739.52, 2802322.50, 1663739.52, 3296.85, 0.00, 12463596.72, 25660346.22, 12463596.72, 25660346.22, 14851485.15, 0.00, 0.00, 1811511.60, 22427808.32, 286817.72, 581578.03, 150331.70, 2219355.42, 1063651.35, 3394119.36, 581578.03, 517851.88, 1330410.40, 487975.81, 570109.34, 40735.95, 10334867.02, 15584.82, 29702.97, 23482.05, 43069.31, 28635.12, 43069.31, 10807.39, 19801.98, 10264.36, 19801.98, 5910.68, 1393.12, 3085.70, 48014.59, 19595.51, 36386.14, 23482.05, 43069.31, 10807.39, 19801.98, 1542.85, 8415.84, 696.56, 8415.84, 1542.85, 8415.84, 922.94, 4455.45, 3691.74, 4455.45, 16790.44, 2970.30, 2081840.95, 21995.64, 8272.88, 10659.53, 18553.12, 20203745.10, 16951016.10, 5154713.73, 3009073.41, 1611347.31, 286448.40, 1012878.00, 596512.35, 234246.32, 196533.52, 0.00, 0.00, 29280.79, 16951016.10, 22707.99, 3009073.41, 59679.53, 286448.40, 22508.40, 596512.35, 29280.79, 196533.52, 4770693.72, 13708.89, 877326.36, 73110.53, 469.35, 689.04, 813.87, 694.04, 584.19, 244.66, 109.85, 399.45, 0.50, 309.57, 179.75, 99.86, 499.31, 469.35, 689.04, 813.87, 694.04, 584.19, 244.66, 109.85, 399.45, 309.57, 179.75, 499.31, 397.31, 583.29, 688.96, 587.52, 494.53, 207.11, 92.99, 338.14, 0.50, 262.06, 152.16, 211.34, 422.67, 397.31, 583.29, 688.96, 587.52, 494.53, 207.11, 92.99, 338.14, 262.06, 152.16, 422.67, 4993.07, 5093.44, 4993.07, 4438.58, 12981.98, 12981.98, 19972.28, 4993.07, 5093.44, 4993.07, 5093.44, 4226.73, 4438.58, 4226.73, 4438.58, 10989.50, 10989.50, 4226.73, 4438.58, 4226.73, 4438.58, 4226.73, 4438.58, 4226.73, 4438.58, 4226.73, 4438.58, 269.69, 2079.67, 2079.67, 3750.36, 16743.61, 2662.75, 1031.35, 2017.30, 2017.30, 1631.41, 206.27, 2017.30, 3530.28, 5547.58, 4765.92, 201730.20, 173306.20, 2017.30, 2017.30, 3530.28, 877.53, 753.88, 1432.28, 1230.47, 1696.59, 0.00, 1829.62, 13868.95, 11914.80, 5043.26, 4332.66, 444537.68, 49016.06, 180627.94, 67736.30, 30481.34, 44888.65, 8501.57, 2855.31, 7385.26, 3608.50, 7385.26, 7552.20, 6050.66, 365.72, 1616.24, 15083.71, 6050.66, 731.44, 1616.24, 11380.03, 6050.66, 548.58, 1616.24, 7552.20, 12684.58, 6050.66, 731.44, 1616.24, 3765.75, 6050.66, 182.86, 808.12, 7552.20, 6050.66, 365.72, 808.12, 3765.75, 5507.63, 182.86, 808.12, 696.56, 1299.03, 7564.61, 365.71, 1542.85, 365.71, 1299.03, 4242.33, 217.16, 227.55, 64.59, 955.74, 3178.92, 217.16, 227.55, 928.26, 182.86, 77.13, 730.99, 73395.18, 4067.09, 2955.90, 894.53, 2329.50, 1737.59, 2955.90, 894.53, 3241.68, 4993.07, 19399.33, 11523.43, 9066.11, 14259.07, 0.00, 4141.15, 40451.40, 13381.14, 12669.40, 132547.33, 55809.40, 7246.70, 43235.64, 138505.44, 43728.10, 5809.83, 5322.80, 11219.76, 253387.95, 139523.50, 27904.70, 276907.22, 242490.40, 205272.87, 3658.73, 21433.25, 18143.66, 138505.44, 3695.72, 21679.91, 18352.47, 19366.10, 197277.75, 48927.04, 154926.95, 131148.69, 904147.03, 117967.25, 99861.59, 10300.79, 3774.89, 1982.38, 11846.64, 19364.40, 7031.41, 3644.80, 20636.98, 18780.54, 677.69, 1516.65, 1035.74, 281.66, 791.96, 2254.51, 853.96, 22772.91, 2853.31, 771.60, 22772.91, 3724.85, 658.12, 22772.91, 7363.01, 554.86, 22772.91, 2254.51, 853.96, 45545.81, 2853.31, 771.60, 45545.81, 3724.85, 658.12, 45545.81, 7363.01, 554.86, 45545.81, 10125.94, 8571.81, 2466.91, 298.81, 18697.75, 3837.48, 54.31, 18697.75, 7761.23, 624.11, 18697.75, 11676.34, 88.93, 18697.75, 31342.88, 6290.76, 18697.75, 12332.88, 10440.03, 24665.76, 20880.05, 69322.48, 3296.85, 23794.94, 0.00, 27607.68, 0.00, 63740.66, 18586.55, 0.00, 13381.14, 11650.44, 35406.87, 84444.15, 16438.77, 0.00, 41441.99, 13381.14, 15239.44, 31314.14, 63740.66, 18586.55, 0.00, 38367.65, 13381.14, 5659.57, 40689.35, 13204.59, 31497.38, 20651.72, 0.00, 13381.14, 5659.57, 40689.35, 13381.14, 0.00, 4715.83, 8665.31, 342412.26, 70638.71, 11928.77, 39239.38, 31066.45, 26689.15, 12883.11, 4146.72, 405.79, 3263.88, 3855.65, 1465.19, 405.79, 3263.88, 3855.65, 2967.17, 3505.13, 1367.38, 1617.92, 15578.38, 1440.73, 5337.39, 6.85, 15578.38, 2103.30, 1014.47, 15578.38, 292.42, 101.45, 2596.40, 7769.11, 1014.47, 3296.85, 3894.59, 2501.68, 16743.61, 1011.30, 3750.36, 73110.53, 4690.23, 9375.92, 4332.97]
+
+            console.log(NatC.length)
+            console.log(elements_superior.length)
+            console.log(elements_inferior.length)
+            console.log(descripcion.length)
+            console.log(unidad.length)
+            console.log(CanPres.length)
+            console.log(Pres.length)
+            console.log(TotPres.length)
+            console.log(PresMdO.length)
+            console.log(PresMat.length)
+            
+            for (var i = TotPres.length - 1; i >= 0; i--) {
+                if (TotPres[i] === 0.00) {
+                    // Eliminamos el elemento en la posición i de todos los arrays
+                    NatC.splice(i, 1);
+                    elements_superior.splice(i, 1);
+                    elements_inferior.splice(i, 1);
+                    descripcion.splice(i, 1);
+                    unidad.splice(i, 1);
+                    CanPres.splice(i, 1);
+                    Pres.splice(i, 1);
+                    TotPres.splice(i, 1);
+                    PresMdO.splice(i, 1);
+                    PresMat.splice(i, 1);
+                }
+            }
+
+            console.log(NatC.length)
+            console.log(elements_superior.length)
+            console.log(elements_inferior.length)
+            console.log(descripcion.length)
+            console.log(unidad.length)
+            console.log(CanPres.length)
+            console.log(Pres.length)
+            console.log(TotPres.length)
+            console.log(PresMdO.length)
+            console.log(PresMat.length)
+
+
+
+
+            /*  PresMdO = Pres.map(function (x) {
+                 return x * 0.3;
+             });
+ 
+             console.log(elements_superior)
+ 
+             PresMat = Pres.map(function (x) {
+                 return x * 0.7;
+             }); */
+
+
+            CanPres = CanPres.map(formatearNumero);
+            Pres = Pres.map(formatearNumero);
+            TotPres = TotPres.map(formatearNumero);
+            PresMdO = PresMdO.map(formatearNumero);
+            PresMat = PresMat.map(formatearNumero);
+
+            function buildTree(superior, inferior) {
+                const tree = {};
+                superior.forEach((sup, i) => {
+                    if (!tree[sup]) {
+                        tree[sup] = [];
+                    }
+                    tree[sup].push(inferior[i]);
+                });
+                return tree;
+            }
+
+
+
+            function createTreeHTML(tree, parentName, isRoot = false) {
+                const ul = document.createElement('ul');
+                ul.className = 'interior';
+                if (isRoot) {
+                    ul.style.display = 'block'; // Ensure the root element's children are visible
+                }
+
+
+
+
+                tree[parentName].forEach((child, index) => {
+
+
+
+                    // console.log(child, index)
+
+                    const li = document.createElement('li');
+                    const container = document.createElement('div');
+                    container.className = 'toggle';
+
+                    //Busca coincidencia exacta entre variables de relación
+                    function encontrarElementoEnC(arrayC, valorA, valorB) {
+                        // Iteramos sobre los arreglos buscando las coincidencias
+                        for (let i = 0; i < elements_inferior.length; i++) {
+                            if (elements_inferior[i] === valorA && elements_superior[i] === valorB) {
+                                return arrayC[i];
+                            }
+                        }
+
+                        // Si no encontramos ninguna coincidencia, retornamos un valor por defecto o lanzamos una excepción
+                        return '?'; // Puedes cambiar esto por undefined o lanzar un error
+                    }
+
+                    function crearMapa(A, B, C) {
+                        const mapa = {};
+                        for (let i = 0; i < A.length; i++) {
+                            const clave = `${A[i]}-${B[i]}`;
+                            mapa[clave] = C[i];
+                        }
+                        return mapa;
+                    }
+
+                    //var mapa3 = crearMapa(elements_inferior, elements_superior, CanPres)
+                    //var mapa5 = crearMapa(elements_inferior, elements_superior, TotPres)
+
+                    function encontrarValorEspecificoOpt(map, valorA, valorB) {
+                        const clave = `${valorA}-${valorB}`;
+                        return map[clave] || null; // Devuelve null si no se encuentra la clave
+                    }
+
+
+
+                    // Add spans for additional fields
+                    const span1 = document.createElement('span');
+                    span1.className = 'field1';
+                    span1.textContent = descripcion[elements_inferior.indexOf(child)];
+                    span1.setAttribute('title', descripcion[elements_inferior.indexOf(child)]);
+                    const span2 = document.createElement('span');
+                    span2.className = 'field2';
+                    span2.textContent = unidad[elements_inferior.indexOf(child)];
+                    span2.setAttribute('title', unidad[elements_inferior.indexOf(child)]);
+                    const span3 = document.createElement('span');
+                    span3.className = 'field3';
+                    span3.textContent = encontrarElementoEnC(CanPres, child, parentName);//encontrarValorEspecificoOpt(mapa3, child, parentName);////
+                    const span4a = document.createElement('span');
+                    span4a.className = 'field4a';
+                    span4a.textContent = PresMat[elements_inferior.indexOf(child)];
+                    const span4b = document.createElement('span');
+                    span4b.className = 'field4b';
+                    span4b.textContent = PresMdO[elements_inferior.indexOf(child)];
+                    const span4 = document.createElement('span');
+                    span4.className = 'field4';
+                    span4.textContent = Pres[elements_inferior.indexOf(child)];
+                    const span5 = document.createElement('span');
+                    span5.className = 'field5';
+                    span5.textContent = encontrarElementoEnC(TotPres, child, parentName);//encontrarValorEspecificoOpt(mapa5, child, parentName);////
+
+                    if ((elements_superior.indexOf(child)) == -1) {
+                        container.classList.add("infimo")
+                        span4.style.color = "black";
+                    }
+
+                    switch (NatC[elements_inferior.indexOf(child)]) {
+                        case 'Capítulo': src_icon = "https://cdn-icons-png.flaticon.com/512/6702/6702850.png"; break;
+                        case 'Partida': src_icon = "https://cdn-icons-png.flaticon.com/512/6911/6911872.png"; break;
+                        case 'Mano de obra': src_icon = "https://cdn-icons-png.flaticon.com/512/2760/2760298.png"; break;
+                        case 'Maquinaria': src_icon = "https://cdn-icons-png.flaticon.com/512/226/226360.png"; break;
+                        case 'Material': src_icon = "https://cdn-icons-png.flaticon.com/512/6450/6450177.png"; break;
+                        default: src_icon = "https://cdn-icons-png.flaticon.com/512/2760/2760298.png";
+                    }
+
+                    const icono_nat = document.createElement('IMG');
+                    icono_nat.className = 'icono';
+                    icono_nat.setAttribute("src", src_icon);
+                    icono_nat.setAttribute('title', NatC[elements_inferior.indexOf(child)]);
+
+                    container.appendChild(document.createTextNode(child));
+                    container.appendChild(span1);
+                    container.appendChild(span2);
+                    container.appendChild(span3);
+                    container.appendChild(span4a);
+                    container.appendChild(span4b);
+                    container.appendChild(span4);
+                    container.appendChild(span5);
+                    container.appendChild(icono_nat);
+
+                    li.appendChild(container);
+
+                    if (tree[child]) {
+                        li.appendChild(createTreeHTML(tree, child));
+                        container.addEventListener('click', function () {
+                            this.classList.toggle('expanded');
+                            const childUl = container.nextElementSibling;
+                            if (childUl) {
+                                childUl.style.display = childUl.style.display === 'block' ? 'none' : 'block';
+                            }
+                        });
+                    }
+
+                    ul.appendChild(li);
+                });
+                return ul;
+            }
+
+
+
+            const tree = buildTree(elements_superior, elements_inferior); console.log(elements_superior[0]);
+            const menu = document.getElementById('menu');
+            const rootLi = document.createElement('li');
+            rootLi.textContent = elements_superior[0];
+            rootLi.appendChild(createTreeHTML(tree, elements_superior[0], true));
+            menu.appendChild(rootLi);
+
+            const expandOptions = document.getElementById('expand-options');
+            expandOptions.addEventListener('change', function () {
+                const selectedOption = expandOptions.value;
+
+                if (selectedOption === 'expand-all') {
+                    expandAll(tree);
+                } else if (selectedOption === 'collapse-all') {
+                    collapseAll(tree);
+                } else if (selectedOption === 'expand-level-2') {
+                    expandToLevel(tree, "menu", 2);
+                }
+            });
+
+            // Función para expandir todo el árbol recursivamente
+            function expandAll(tree) {
+                const toggles = document.querySelectorAll('.toggle');
+                toggles.forEach(toggle => {
+                    toggle.classList.add('expanded');
+                    const siblingUl = toggle.nextElementSibling;
+                    if (siblingUl) {
+                        siblingUl.style.display = 'block';
+                    }
+                });
+            }
+
+            // Función para contraer todo el árbol recursivamente, excepto el elemento raíz
+            function collapseAll(tree) {
+                const toggles = document.querySelectorAll('.toggle');
+                toggles.forEach((toggle, index) => {
+                    if (index !== 0) { // Skip the root element
+                        toggle.classList.remove('expanded');
+                        const siblingUl = toggle.nextElementSibling;
+                        if (siblingUl) {
+                            siblingUl.style.display = 'none';
+                        }
+                    }
+                });
+            }
+
+            // Función para expandir hasta un nivel específico del árbol
+            function expandToLevel(tree, parentName, level) {
+                if (level === 0) return;
+
+                var ul = document.querySelector(`#${parentName} > ul > ul`);
+                if (ul) {
+                    ul.style.display = 'block';
+                    const children = ul.children;
+                    for (let i = 0; i < children.length; i++) {
+                        const child = children[i];
+                        const toggle = child.querySelector('.toggle');
+                        if (toggle) {
+                            toggle.classList.add('expanded');
+                            const siblingUl = toggle.nextElementSibling;
+                            if (siblingUl) {
+                                siblingUl.style.display = 'block';
+                                expandToLevel(tree, toggle.textContent.trim(), level - 1);
+                            }
+                        }
+                    }
+                }
+            }
+
+            document.getElementById('spinner-container').style.display = 'none';
+
+
+        }
+
+
+
+        );
+
+        function formatearNumero(numero) {
+            // Convertir el número a una cadena con dos decimales
+            let numeroStr = numero.toFixed(2);
+
+            // Separar la parte entera y la decimal
+            let [entero, decimal] = numeroStr.split('.');
+
+            // Invertir la parte entera para insertar los puntos de mil
+            entero = entero.split('').reverse().join('');
+            entero = entero.replace(/(\d{3})(?=\d)/g, '$1.');
+            entero = entero.split('').reverse().join('');
+
+            // Reemplazar el punto decimal con una coma
+            return `${entero},${decimal}`;
+        }
+
+        const buttonA = document.getElementById('buttonA');
+        const buttonB = document.getElementById('buttonB');
+        const elementoA = document.getElementById('menu_container');
+        const elementoB = document.getElementById('tabla_conceptos');
+        const elementoC = document.getElementById('banner');
+
+        function cambiarEstado(boton) {
+            // Removemos la clase 'active' de todos los botones
+            buttonA.classList.remove('active_button');
+            buttonB.classList.remove('active_button');
+
+            // Agregamos la clase 'active' al botón clickeado
+            boton.classList.add('active_button');
+            document.getElementById('loading-indicator').style.display = 'block';
+
+            if (boton === buttonB) {
+                //$("#menu_container").fadeIn(500);
+                elementoA.style.display = 'none';
+                //elementoB.style.display = 'table';
+                elementoB.style.opacity = "1";
+                elementoC.style.contentVisibility = 'hidden';
+
+            } else {
+                //$("#menu_container").fadeIn(500);
+                elementoB.style.display = 'none';
+                elementoB.style.opacity = "0";
+                elementoA.style.display = 'block';
+                elementoC.style.contentVisibility = 'visible';
+            }
+            document.getElementById('loading-indicator').style.display = 'none';
+        }
+
+        // Agregamos event listeners a los botones
+        buttonA.addEventListener('click', () => cambiarEstado(buttonA));
+        buttonB.addEventListener('click', () => cambiarEstado(buttonB));
+
+        // Ocultar el indicador de carga al finalizar
+        //document.getElementById('loading-indicator').style.display = 'none';
+        function crearTabla(arrayDeArrays) {
+            // Crear la tabla
+            const tabla = document.getElementById('tabla_conceptos');
+            tabla.id = "sortableTable";
+
+            // Crear la cabecera de la tabla
+            const thead = document.createElement('thead');
+            const headerRow = document.createElement('tr');
+
+            // Iteramos sobre las columnas (arrays internos)
+            arrayDeArrays.forEach((columna, index) => {
+                const th = document.createElement('th');
+                th.textContent = columna[0]; // Tomamos el primer elemento de cada columna como encabezado
+                th.setAttribute("onclick", `sortTable(${index})`); // Asignar el índice correcto
+                if (index > 2) { th.style.width = "150px"; th.style.textAlign = "rigth"; }
+                if (index < 2) { th.style.width = "125px" }
+                headerRow.appendChild(th);
+            });
+
+            thead.appendChild(headerRow);
+            tabla.appendChild(thead);
+
+            // Crear el cuerpo de la tabla
+            const tbody = document.createElement('tbody');
+            // Iteramos sobre las filas (índice 1 en adelante de cada columna)
+            for (let i = 1; i < arrayDeArrays[0].length; i++) {
+                const row = document.createElement('tr');
+                arrayDeArrays.forEach((columna, index) => {
+                    const cell = document.createElement('td');
+                    if (index > 3) {
+                        cell.style.textAlign = "right";
+                        try { cell.textContent = formatearNumero(columna[i]); } catch { cell.textContent = (columna[i]); }//formatearNumero(columna[i])
+                    } else {
+                        cell.textContent = (columna[i]);
+                    }
+
+                    row.appendChild(cell);
+                });
+                tbody.appendChild(row);
+            }
+            tabla.appendChild(tbody);
+
+            // Agregar la tabla al documento
+            document.body.appendChild(tabla);
+        }
+
+        const datos = [
+            ['Código', '01.04.01', '04.01.01', '04.02.01', '04.03.01', '04.04.01', '04.05.01', '04.06.01', '04.07.01', '04.08.01', '04.09.01', '04.10.01', '04.11.01', '04.12.01', '04.13.01', '04.14.01', '04.15.01', '06.01.02D', '06.01.03D', '06.01.04', '07.01.01D', '07.02.01.01D', '07.02.01.02D', '07.02.01.03D', '07.02.01.04', '07.03.01D', '07.05.01.04', '07.06.01D', '07.08.01.01', '07.09.01D', '10.01.01D', '10.01.02D', '10.01.03', '10.02', '12.01', '12.07', '12.08', '12.17', '12.18', '14.02.01', '17.01', '17.02', '2.06', '22.01', '22.02', '22.03', '22.04', '22.05.01', '22.05.03.01', '22.05.03.02', '22.05.03.03', '22.05.04.01', '22.05.04.02', '22.05.05.01', '22.06.01', '22.07', '22.08', '24.01.06D', '24.02.06D', '24.04.02D', '24.04.06D', '24.05.03D', '24.07.02D', '24.08.02D', '24.09.02D', '24.10.02D', '24.11.03D', '24.12.03D', '24.13.02D', '24.14.02D', '24.15.03D', '26.01', '26.02', '26.03', '26.04', '26.05', '26.06', '26.07', '27.01', '33.01', 'M01.100.0010', 'M01.200.0020', 'M01.400.0010', 'M01.500.0010', 'M02.200.0020D', 'M03.000.002D', 'M03.200.0060D', 'M03.200.1050D', 'M04.200.0030', 'M07.020.0010', 'M07.030.0011', 'M07.030.0012', 'M08.010.0101', 'M08.020.0010.b', 'M10.050.0004', 'M10.050.0010', 'M10.060.0010', 'M10.060.0020', 'M10.070.0010', 'M10.070.0011', 'M10.070.0013', 'M10.070.0014', 'M10.070.0024', 'M10.070.0025', 'M10.075.0010', 'M10.075.0012', 'M10.075.0018', 'M10.075.0019', 'M10.075.0020', 'M11.200.0024b', 'M13.030.0010', 'M13.030.0130', 'M13.060.0001', 'M14.000.001', 'M14.000.100', 'M14.000.101', 'M14.000.102', 'M14.000.103', 'M14.000.110', 'M14.000.111', 'M14.000.112', 'M14.000.113', 'M14.000.300', 'M14.000.301', 'M14.000.303', 'M14.000.304', 'M14.000.305', 'M14.000.310', 'M14.000.311', 'M14.000.312', 'M14.000.313', 'M14.000.315', 'M14.400.001', 'M14.400.024', 'M14.400.072', 'M17.010.005', 'M17.010.012', 'M17.010.014', 'M17.010.018', 'M17.010.019', 'M17.010.021', 'M17.010.036', 'M17.010.044', 'M17.010.063', 'M17.030.0004', 'M19.000.150', 'M19.000.200', 'M50.000.010', 'M50.000.012', 'M50.000.030', 'M50.000.035', 'M50.000.036', 'M50.000.040', 'M50.000.050', 'O01.022', 'O01.042', 'O01.043', 'O01.102', 'O01.104', 'O01.902', 'O01.903', 'O01.903b', 'O02.010.050', 'O02.010.080', 'O02.020.050', 'O02.020.080', 'PCA099.0040', 'PCA099.0045', 'PCI100.0001', 'PCI100.0012', 'PCI100.0014', 'PMR100.0080', 'PMR100.0081', 'PRZ100.0010'],
+            ['Naturaleza', 'Material', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Material', 'Material', 'Mano de obra', 'Material', 'Material', 'Material', 'Material', 'Mano de obra', 'Material', 'Mano de obra', 'Material', 'Mano de obra', 'Material', 'Material', 'Material', 'Mano de obra', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Material', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Material', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Mano de obra', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida', 'Partida'],
+            ['Descripción', 'Matafuegos Polvo Abc 5 Kg', 'Mano de obra Paunersek', 'Mano de obra Paunersek', 'Mano de obra Paunersek', 'Mano de obra Paunersek', 'Mano de obra Paunersek', 'Mano de obra Paunersek', 'Mano de obra Paunersek', 'Mano de obra Paunersek', 'Mano de obra Paunersek', 'Mano de obra Paunersek', 'Mano de obra Paunersek', 'Mano de obra Paunersek', 'Mano de obra Paunersek', 'Mano de obra Paunersek', 'Mano de obra Paunersek', 'Kuaiet – Baffle Paneles de 300 x 1200 x 12mm', 'Tensores', 'Cielorraso especial Baffle acústico - Mano de Obra', 'Piso vinílico homogéneo IQ Surface – Tarkett Rollos 2x23m', 'Masa niveladora 4Kg', 'Adhesivo 23Kg', 'Cordón de soldadura Rollo 50m', 'Colocación piso vinílico en rollo - Il Rivestimento', 'Piso vinílico heterogéneo Fresno  – Listones 187 x 1227 mm', 'Colocación piso vinílico heterogéneo - Il Rivestimento', 'Alfombra modular Shaw Contract – Colour Plank', 'Colocación de alfombra modular - Il Rivestiimeto', 'Piso vinílico heterogéneo Ambienta stone – Tarkett Listones de 600 x 600 mm', 'Kuaiet – Beam Paneles de 1200 x 2700 x 9mm', 'Wepel 2000 - Cemento de Contacto x 18lt', 'Revestimiento de fieltro acústico - Mano de obra', 'Tapacanto laqueado. Medida 0,12mts x 2,40mts', 'Desarme y rearmado frentes vidriados de oficinas actuales', 'FV 07 | Paño Fijo y puerta de abrir. Medidas paño fijo: 700mm x 2400mm. Medida vano de puerta: 900mm', 'FV 08 | Paño Fijo y puerta de abrir. Medidas paño fijo: 700mm x 2400mm. Medida vano de puerta: 900mm', 'FV 17 | Medidas paño fijo: 1200mm x 2400mm. Medidas paño fijo superior : 2200mm x 1400mm. Medida vano de puerta: 1000mm. Con pic', 'FV 18 | Medidas paño fijo: 4610mm x 2700mm. Medidas paño fijo superior : 5600 mm x 1400mm. Medida vano de puerta: 1000mm. Con pi', 'Tope Piso puerta media esfera Acero Goma', 'Bacha de Cocina. JOHNSON Quadra A304 Q37(C/SOPAPA)', 'Grifería de Cocina. FV monocomando ARIZONA. 0411.02/B1CR', 'Retiro de frentes de oficina.', 'ME01-02-03- Módulo Lockers. Incluye R 02 (Revestimiento melaminico MDF simil madera. Modelo: Camellia - Faplac. Altura: 2,65 mts', 'ME04 - Guardado Alto.', 'ME04B - Guardado Alto.', 'ME05 - Módulo Lockers.', 'ME06-07-08 Espacio colaborativo - Treillage, Bancada en madera y Bancada tapizada', 'Relleno - goma espuma de alta densidad 5cm de altura', 'Tapicería - Tela antimancha', 'Mano de obra', 'Relleno - goma espuma de alta densidad 2cm de altura', 'Mano de obra', 'Mno de obra', 'ME09 - Bancada coffee', 'ME10 - Barra coffee', 'ME11 - Mueble coffee', 'ML01-ISLA DE 6 PUESTOS - Línea K', 'ML02 - ISLA DE 4 PUESTOS - Linea K', 'ML04 - MUEBLE DE GUARDADO - Línea K', 'ML03 - ESCRITORIO SIMPLE - Línea K', 'ML05 - MUEBLE DE GUARDADO - Línea K', 'ML07 - GUARDADO ALTO - Línea K', 'ML07B - GUARDADO ALTO - Línea K', 'ML08 - PUESTO FIJO - Línea K', 'ML08B - CASSEWORK 23 - Línea K', 'ML09 - MESA DE REUNION - Línea K', 'ML10 - MESA DE REUNION', 'ML11 - MESA CIRCULAR ALTA - Línea K', 'ML12 - MESA DE REUNION CIRCULAR - Línea K', 'FLETE E INSTALACIÓN - EN SANTA FE  - LUNES A VIERNES DE 8', 'MC 02 | Silla tapizada en tela spazio, color a definir. Estructura metálica, giratoria cromada.', 'MC 03 | Silla tapizada en tela spazio, color a definir. Estructura fija de 4 patas de madera.', 'MC 04 | Banqueta tapizada en tela spazio, color a definir. Estructura a 4 patas fijas de madera.', 'MC 05 | Puff de 400 mm Ø X 450 mm de altura. Tapizado en tela spazio, color a definir. Base con regatones.', 'MC 06 | Silla Modelo. Con apoyabrazos, colores visón y verde.', 'MC 07 | Mesa de arrime. Medidas 400mm x 400mm x 650mm de altura. Construida en chapa metálica, color negro.', 'MC 11 | Mesa medidas 700mm x 420mm de altura. Tapa de melamina nórdica de 25mm. Base de caño negro microtexturado.', 'Desmontaje y reinstalación de cortinas existentes.', 'Seguros', 'Bolsón de arena', 'Bolsón de granza', 'Cal en polvo 25kg', 'Cemento portland 50kg', 'Granito negro brasil extra 2cm (trabajado)', 'Insumo acero no estructural', 'Tubo estructural', 'Ménsula 350 x 150 en ángulo de 1”X1/8 pintada antióxido+sintético', 'Fenólico 18mm', 'Hidrófugo en pasta Ceresita 20kg', 'Adhesivo Klaukol impermeable potenciado 30kg', 'Pastina Klaukol 1kg', 'Film de polietileno (e=100 micrones)', 'Aislante Lana De Vidrio Rígida 50 Mm 35 Kg/m3', 'Placa de yeso - Estándar 12.5mm 1.20m x 2.40m', 'Placa de yeso - Resistente a la humedad 12.5mm 1.20m x 2.40m', 'Cinta de papel microperforada 150m', 'Masilla 32kg', 'Perfil Durlock solera - 35mm x 28mm x 2,60m', 'Perfil Durlock solera - 70mm x 28mm x 2,60m', 'Perfil Durlock montante - 34mm x 35mm x 2,60m', 'Perfil Durlock montante - 69mm x 35mm x 2,60m', 'Perfil Durlock cantonera - 32mm x 32mm x 2,60m', 'Perfil Durlock buña Z - 2,60m', 'Tornillos T1 - Punta aguja x 100u', 'Tornillos T2 - Punta aguja x 100u', 'Tarugos de nylon N°8 con tope x 100u', 'Tornillo de acero de 6mm x 100u', 'Tornillo autoperforante 12x2mm 100u', 'Zócalo de madera MDF prepintado 7 cm', 'Hoja puerta placa', 'Marco chapa a medida', 'Kit herraje', 'Insumos instalación sanitaria', 'Caño Duratop X 40mm', 'Caño Duratop X 50mm', 'Caño Duratop X 63mm', 'Caño Duratop X 110mm', 'Codo Duratop X 40mm', 'Codo Duratop X 50mm', 'Codo Duratop X 63mm', 'Codo Duratop X 110mm', 'Caño Acqua System 25mm', 'Caño Acqua System 32mm', 'Caño Acqua System 50mm', 'Caño Acqua System 63mm', 'Caño Acqua System 90mm', 'Llave de paso Acqua System 25mm', 'Codo Acqua System 25mm', 'Codo Acqua System 32mm', 'Codo Acqua System 50mm', 'Codo Acqua System 90mm', 'Base de apoyo Rotoplas para 1100lts', 'Tanque Rotoplas multicapa 1100lts', 'Bomba presurizadora Rowa Max Press hasta 22mts', 'Látex interior - Sherwin Williams Loxon satinado 20lts', 'Látex cielorraso - Sherwin Williams cielorrasos z10 20lts', 'Barniz - Alba Cristalba mate 4lts', 'Esmalte sintético con convertidor blanco brillante 20lts Albalux', 'Esmalte poliuretánico marca Revesta (lata 4 lts)', 'Sikaguard 700 S Impermeabilizante hidrorepelente 20lt', 'Fijador al aguarrás 20lts', 'Enduído plástico interior 20lts', 'Base epoxi marca Revesta (lata 4 lts)', 'Revestimiento cerámico COK.GUARDA 6,9X28,5 VENETO NEGRO BRILLO', 'Volquete 5m3', 'Certificado disposición final', 'Alquiler obrador 6.00m x 2.40m con aire acondicionado', 'Alquiler obrador - Flete entrega o retiro', 'Servicio de internet', 'Servicio de alarma - kit (Incluye detector de movimiento, sirena interior y exterior)', 'Servicio de alarma - Monitoreo', 'Alquiler dispenser de agua hasta 8 bidones de 20lts', 'Aire Acondicionado split frio/calor 2800f 3300w', 'Oficial albañil', 'Ayudante albañil', 'Ayudante movimientos', 'Oficial Básico p/CS', 'Ayudante Básico p/CS', 'Mano de obra Subcontratada 2° Nivel (2 Of + C.S.)', 'Mano de obra Subcontratada 3° Nivel (1,3 Of + C.S.)', 'Mano de obra Subcontratada 3° Nivel (1,3 Ay + C.S.)', 'CS ART fijo oficial', 'CS Plus oficial normal', 'CS ART fijo ayudante Ay', 'CS Plus Ay común', 'Colocación hoja de madera', 'Colocación marco de madera', 'Higiene y seguridad - Visitas mensuales', 'Coordinación de rubros - Equipo de obra grande', 'Coordinación de rubros - Apoyo de OT grande', 'Corte y pegado bacha', 'Terminación pulido lineal o corte 45', 'Replanteo terreno - Agrimensor'],
+            ['Unidad', 'u', 'gl', 'gl', 'gl', 'gl', 'gl', 'gl', 'gl', 'gl', 'gl', 'gl', 'gl', 'gl', 'gl', 'gl', 'm2', 'u', 'u', 'u', 'm2', 'bolsa', 'balde', 'rollo', 'm2', 'm2', 'm2', 'm2', 'm2', 'm2', 'u', 'u', 'm2', 'Un', 'gl', 'Un', 'Un', 'Un', 'Un', 'u', 'Un', 'Un', 'gl', 'Un', 'Un', 'Un', 'Un', 'Un', 'm2', 'm2', 'gl', 'm2', 'gl', 'gl', 'Un', 'Un', 'Un', 'u', 'u', 'u', 'u', 'u', 'u', 'u', 'u', 'u', 'u', 'u', 'u', 'u', 'gl', 'Un', 'Un', 'Un', 'Un', 'Un', 'Un', 'Un', 'Gl', 'Gl', 'bolson', 'm3', 'bolsa', 'bolsa', 'm2', 'kg', 'kg', 'u', 'm2', 'u', 'bolsa', 'bolsa', 'm2', 'm2', 'u', 'u', 'rollo', 'balde', 'u', 'u', 'u', 'u', 'u', 'u', 'caja', 'caja', 'caja', 'caja', 'caja', 'm', 'm2', 'm', 'u', 'u', 'm', 'm', 'm', 'm', 'u', 'u', 'u', 'u', 'm', 'm', 'm', 'm', 'm', 'u', 'u', 'u', 'u', 'u', 'u', 'u', 'u', 'Balde', 'Balde', 'Lata', 'Balde', 'lts', 'Balde', 'Balde', 'balde', 'lts', 'm2', 'm3', 'm3', 'mes', 'u', 'mes', 'gl', 'mes', 'mes', 'u', 'hs', 'hs', 'hs', '$', '$', 'hs', 'hs', 'hs', '$', '$', '$', '$', 'm2', 'm', 'mes', 'mes', 'mes', 'u', 'm', 'día'],
+            ['Cantidad total', '1', '40', '337', '4', '19', '5', '38', '19', '51', '19', '52', '146', '49', '106', '5', '523', '35', '70', '35', '698', '99.91', '17.95', '16.05', '698', '227', '272', '27', '27', '45', '7.99', '1.99', '24', '10', '1', '2', '2', '2', '1', '22', '1', '1', '1', '1', '1', '1', '1', '1', '6', '22.7', '4', '16.5', '1', '1', '1', '1', '1', '13', '2', '20', '2', '15', '3', '1', '3', '1', '1', '7', '1', '1', '1', '10', '2', '8', '3', '13', '4', '2', '1', '1', '26.15', '20.73', '59.31', '190.15', '3.4', '100.1', '90.22', '3.4', '12.6', '0.83', '1.79', '5.25', '539', '523', '645.47', '2.92', '10.56', '28.81', '2', '206.72', '5.8', '584.87', '85.25', '67.97', '50.92', '270.54', '17.82', '17.65', '0.18', '348', '4.9', '14.69', '3.06', '423.81', '3.62', '1.3', '0.66', '3.51', '3.82', '0.89', '0.32', '0.7', '6.83', '0.23', '0.44', '0.27', '0.04', '0.49', '3.52', '0.01', '0.08', '0.01', '0.01', '0.01', '0.01', '14.13', '5.38', '1.35', '0.15', '0.66', '1.33', '5.54', '45.35', '0.33', '13.8', '125', '75', '6', '2', '6', '1', '6', '6', '1', '1758.04', '1021.86', '406.31', '1737.7', '1448.51', '42.02', '703.38', '885.9', '1737.7', '1737.7', '1448.51', '1448.51', '4.9', '14.69', '6', '6', '6', '1.81', '5.95', '2.55'],
+            ['Precio unitario', '69306.93', '29702.97', '43069.31', '43069.31', '19801.98', '19801.98', '48014.59', '36386.14', '43069.31', '19801.98', '8415.84', '8415.84', '8415.84', '4455.45', '4455.45', '2970.3', '21995.64', '4136.44', '10659.53', '29280.79', '9772.57', '192138.42', '56939.7', '18792.02', '22707.99', '8790.77', '59679.53', '7150.71', '22508.4', '51754.46', '119231.29', '9179.04', '56435.64', '3267326.73', '1195674.05', '1195674.05', '2024047.08', '4109374.23', '3263.23', '95124.61', '39792.57', '60110.54', '9806930.69', '1267326.73', '1702970.3', '2277227.72', '9504950.5', '20333.85', '5581.72', '27031.92', '7726.46', '1881188.12', '563492.08', '1574257.43', '1782178.22', '1930693.07', '1530089.11', '1036069.31', '179376.24', '358752.48', '289158.42', '349930.69', '289158.42', '415603.96', '361693.07', '660653.47', '235247.52', '312683.17', '387178.22', '4033514.85', '195059.41', '192118.81', '259752.48', '115663.37', '60772.28', '132326.73', '148990.1', '1346534.65', '14851485.15', '20651.72', '15686.55', '4801.43', '8150.98', '342412.26', '2946.98', '2117.73', '12883.11', '7564.61', '24594.65', '9979.93', '3659.24', '245.17', '16790.44', '10345.48', '17376.14', '7012.03', '24366.34', '2389.36', '3247.57', '2740.45', '3657.18', '1813.96', '4017.85', '2171.56', '1219.04', '6501.47', '1845.53', '26521.69', '4332.97', '277836.05', '37630.82', '49016.06', '41.24', '1734.24', '2194.85', '2865.27', '5663.85', '623.33', '866.97', '1061.49', '2134.09', '1897.62', '2951.91', '5970.18', '8981.8', '24109.91', '9658.03', '445.98', '678.91', '2496.45', '20292.78', '48927.04', '197277.75', '904147.03', '230373.57', '112707.26', '58483.14', '161792.15', '26686.95', '221974.59', '101447.1', '27347.54', '14407.29', '63574.37', '9271.59', '39313.02', '341585.96', '336487.66', '67046.92', '839777.99', '31176.82', '33523.47', '804563.07', '4993.07', '4226.73', '4226.73', '4993.07', '4226.73', '19972.28', '12981.98', '10989.5', '0.5', '99.86', '0.5', '211.34', '19050.84', '14111.73', '122192.13', '4276724.37', '2077266.12', '22422.5', '22422.5', '414179.41'],
+            ['Precio total', '69306.93', '1188118.8', '14514357.47', '172277.24', '376237.62', '99009.9', '1824554.42', '691336.66', '2196534.81', '376237.62', '437623.68', '1228712.64', '412376.16', '472277.7', '22277.25', '1553466.9', '769847.4', '289550.8', '373083.55', '20437991.42', '976377.4687', '3448884.639', '913882.185', '13116829.96', '5154713.73', '2391089.44', '1611347.31', '193069.17', '1012878,', '413518.1354', '237270.2671', '220296.96', '564356.4', '3267326.73', '2391348.1', '2391348.1', '4048094.16', '4109374.23', '71791.06', '95124.61', '39792.57', '60110.54', '9806930.69', '1267326.73', '1702970.3', '2277227.72', '9504950.5', '122003.1', '126705.044', '108127.68', '127486.59', '1881188.12', '563492.08', '1574257.43', '1782178.22', '1930693.07', '19891158.43', '2072138.62', '3587524.8', '717504.96', '4337376.3', '1049792.07', '289158.42', '1246811.88', '361693.07', '660653.47', '1646732.64', '312683.17', '387178.22', '4033514.85', '1950594.1', '384237.62', '2078019.84', '346990.11', '790039.64', '529306.92', '297980.2', '1346534.65', '14851485.15', '540042.478', '325182.1815', '284772.8133', '1549908.847', '1164201.684', '294992.698', '191061.6006', '43802.574', '95314.086', '20413.5595', '17864.0747', '19211.01', '132146.63', '8781400.12', '6677696.976', '50738.3288', '74047.0368', '701994.2554', '4778.72', '671337.6704', '15894.61', '2138974.867', '154640.09', '273093.2645', '110575.8352', '329799.0816', '115856.1954', '32573.6045', '4773.9042', '1507873.56', '1361396.645', '552796.7458', '149989.1436', '17477.9244', '6277.9488', '2853.305', '1891.0782', '19880.1135', '2381.1206', '771.6033', '339.6768', '1493.863', '12960.7446', '678.9393', '2626.8792', '2425.086', '964.3964', '4732.4347', '1569.8496', '6.7891', '199.716', '202.9278', '489.2704', '1972.7775', '9041.4703', '3255178.544', '606365.0588', '78952.239', '24268.8225', '17613.387', '295226.2047', '562016.934', '1240210.939', '4754.4057', '877326.306', '1158948.75', '2948476.5', '2049515.76', '672975.32', '402281.52', '839777.99', '187060.92', '201140.82', '804563.07', '8778016.783', '4319126.318', '1717362.666', '8676457.739', '6122460.672', '839235.2056', '9131265.092', '9735598.05', '868.85', '173526.722', '724.255', '306128.1034', '93349.116', '207301.3137', '733152.78', '25660346.22', '12463596.72', '40584.725', '133413.875', '1056157.496']
+        ];
+
+        crearTabla(datos);
+
+        function sortTable(columnIndex) {
+            const table = document.getElementById("sortableTable");
+            const tbody = table.tBodies[0];
+            const rows = Array.from(tbody.rows);
+            const isAsc = table.querySelectorAll("th")[columnIndex].classList.toggle("sort-asc");
+
+            const comparator = (a, b) => {
+                let aText = a.cells[columnIndex].textContent.trim().toLowerCase();
+                let bText = b.cells[columnIndex].textContent.trim().toLowerCase();
+
+                const aNum = parseFloat(aText.replaceAll('.', '').replaceAll(',', '.'));
+                const bNum = parseFloat(bText.replaceAll('.', '').replaceAll(',', '.'));
+
+                if (!isNaN(aNum) && !isNaN(bNum)) {
+                    return isAsc ? aNum - bNum : bNum - aNum;
+                }
+
+                return isAsc ? aText.localeCompare(bText) : bText.localeCompare(aText);
+            };
+
+            rows.sort(comparator);
+            tbody.append(...rows);
+
+            Array.from(table.querySelectorAll("th")).forEach((th, i) => {
+                th.classList.remove("sort-asc", "sort-desc");
+                if (i === columnIndex) th.classList.add(isAsc ? "sort-asc" : "sort-desc");
+            });
+        }
+
+
+        $("#buttonB").click(function () {
+            $("#sortableTable").fadeIn("400");
+        });
+        $("#buttonA").click(function () {
+            $("#menu_container").fadeIn("400");
+        });
+
+
+
+    </script>
+</body>
+
+</html>
